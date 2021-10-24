@@ -23,6 +23,9 @@ export default function TopNavBar({
   ytdlUrl,
   nextSong,
   stopSong,
+  setTokenValid,
+  setUrlToken,
+  setSearchText,
 }: any) {
   //
   //ADD SONG
@@ -66,6 +69,16 @@ export default function TopNavBar({
         return queued != song;
       })
     );
+  };
+
+  const searchSong = (e: any) => {
+    setSearchText(e.target.value);
+  };
+
+  const logoutClick = () => {
+    setTokenValid(false);
+    localStorage.setItem("myysicplayer-token", "wroong");
+    setUrlToken("wrong");
   };
 
   return (
@@ -126,6 +139,17 @@ export default function TopNavBar({
           })}
           {playQueue.length === 0 ? <div id="emptyqueue">empty</div> : null}
         </section>
+
+        <button id="logout-button" onClick={logoutClick} title="Logout">
+          logout
+        </button>
+        <input
+          type="text"
+          className="search-input"
+          onChange={searchSong}
+          title="Search song name"
+          placeholder="Search"
+        />
 
         <CSSTransition
           in={showAddSongMenu}

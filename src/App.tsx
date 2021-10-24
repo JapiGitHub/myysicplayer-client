@@ -33,6 +33,8 @@ function App() {
   const [selectedSongLength, setSelectedSongLength] = useState<number>(0);
   const [songElapsed, setSongElapsed] = useState<number>(0);
 
+  const [searchText, setSearchText] = useState("");
+
   //scrolling title
   const [scrollingTitle, setScrollingTitle] = useState("");
 
@@ -43,34 +45,35 @@ function App() {
 
   //JWT & SIGN-IN
   const [tokenValid, setTokenValid] = useState(false);
-  const [urlToken, setUrlToken] = useState(
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiYWRtaW4iLCJpYXQiOjE2MzQ4OTk4MDAsImV4cCI6MTYzNTQ5OTgwMH0.dRTg9aE9V9DGb-IfNQuyaqhBXV_rdTcurgzAy2RacqU"
-  );
+  const [urlToken, setUrlToken] = useState("initialblankwrong");
 
   //get song/URLs list
   useEffect(() => {
-    axios
-      .get<any>("http://localhost:2000/", {
-        headers: { token: urlToken },
-      })
-      .then(function (response) {
-        // handle success
-        setSongList(response.data);
-      })
-      .catch(function (error) {
-        // handle error
-        console.error("cound get songlist", error);
-      });
-  }, []);
+    if (urlToken != "initialblankwrong") {
+      axios
+        .get<any>("http://localhost:2000/", {
+          headers: { token: urlToken },
+        })
+        .then(function (response) {
+          // success
+          setSongList(response.data);
+          setTokenValid(true);
+        })
+        .catch(function (error) {
+          // handle error
+          console.log("TOKEN: ", urlToken);
+          console.error("couldnt get songlist", error);
+          //DEBUG
+          //TOKEN:  initialblankwrong
+          //toimii kuitenkin jos saa esim seivaamalla renderöimään uudestaan reactin
+        });
+    }
+  }, [urlToken]);
 
-  //BIISIN VAIHTO
   useEffect(() => {
-    setSongElapsed(0);
-    //varsinainen biisin vaihto tulee Sound komponentin playStatus proppiin
-  }, [selectedSong]);
+    //TÄHÄN TOKEN LÄHETYS
 
-  //scrolling title
-  useEffect(() => {
+    //scrolling title
     //2000 nimen lista jota scrollataan. ei pitäs loppua kesken vaikka ois kuinka pitkä biisi xD
     //react-text-scroll löytyy npm:stä, mut siinä ei voinu säätää et kuinka lyhyt väli tekstien välillä oli.
     const lista: number[] = Array.from(Array(2000).keys());
@@ -81,8 +84,13 @@ function App() {
       .join("             ☁️              ");
     //jotta monta speissiä toimii ni CSS :       #songname-topbar {white-space: pre-wrap;}
     setScrollingTitle(montaTitles);
+
+    //progressbar alkaa alusta
+    setSongElapsed(0);
   }, [selectedSong]);
 
+  //
+  //SONG CONTROLS
   //shuffle
   const nextSong = () => {
     setSongElapsed(0);
@@ -94,14 +102,11 @@ function App() {
         songList[Math.floor(Math.random() * songList.length + 1)]
       );
     }
-    //else queue on tyhjä niin arvo math.floor...
-    //miten saat biisin loputtua sen poistumaan? ei tarvi koska se poistaa aina ku se menee tän kautta.
-    //jos click play aiemmin, niin ylimmän voi poistaa jos on sama kuin klikattu!
 
     setPlayingOrPaused("PLAYING");
-    setSongElapsed(0);
   };
 
+  //FAST FORWARD
   //jos haluais kelauksen:kelaus fast forward ja back
   //tulis ton Sound komponentin playFromPosition propista. sitä on käytetty tossa songElapsed statessa esimerkiksi
 
@@ -161,6 +166,9 @@ function App() {
             ytdlUrl={ytdlUrl}
             nextSong={nextSong}
             stopSong={stopSong}
+            setTokenValid={setTokenValid}
+            setUrlToken={setUrlToken}
+            setSearchText={setSearchText}
           />
           <AllSongs
             playQueue={playQueue}
@@ -178,6 +186,7 @@ function App() {
             loadingSong={loadingSong}
             playingSong={playingSong}
             makeNext={makeNext}
+            searchText={searchText}
           />
         </div>
       ) : (

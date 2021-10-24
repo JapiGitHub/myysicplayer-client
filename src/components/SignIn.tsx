@@ -14,7 +14,7 @@ export default function SignIn({ setTokenValid, setUrlToken }: any) {
 
   const loginClick = (e: any) => {
     e.preventDefault();
-    //tähän tulee axioksen login pyyntö
+
     axios
       .get("http://localhost:2000/login", {
         headers: {
@@ -23,10 +23,14 @@ export default function SignIn({ setTokenValid, setUrlToken }: any) {
         },
       })
       .then(function (response: any) {
-        console.error("JWT : ", response.data);
+        console.error("JWT : TO LOCALSTORAGE ::: ", response.data);
         localStorage.setItem("myysicplayer-token", response.data);
         setTokenValid(true);
+        //huom pelkkä tää state ei ole token checki vaan jokaisella latauksella esim joutuu tekemään token checkin noden kanssa.
         setUrlToken(response.data);
+        //tää ei muuten sit muutu jos testattessa muutat localstoragesta sitä "myysicplayer-token" valueta.
+        //mutta jos välttämättä haluat testata ettei väärällä tokenillä pääse login ikkunan takanakaan tekemään mitään, niin
+        //vaihda se devtoolsin react componentsien statesta, ni ei anna kuunnella biisejä enää. eli toimii.
       })
       .catch(function (error) {
         console.log(error);

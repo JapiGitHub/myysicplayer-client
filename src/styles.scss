@@ -386,6 +386,34 @@ $topbar-height: 4.35rem;
       }
     }
 
+    .search-input {
+      position: absolute;
+      right: 1vw;
+      top: calc(#{$topbar-height} + 3rem);
+      width: 2.5vw;
+      font-size: 1.1rem;
+      transition: all 0.5s ease;
+      text-align: center;
+      border: none;
+      border-radius: 0.2vw;
+    }
+
+    .search-input:hover {
+      width: 20vw;
+      font-size: 2rem;
+    }
+
+    #logout-button {
+      position: absolute;
+      right: 1vw;
+      top: calc(#{$topbar-height} + 0.3rem);
+      font-size: 1.1rem;
+      border-radius: 0.2vw;
+      padding: 0.2vh 0.2vw 0.2vh 0.2vw;
+
+      transform-origin: center;
+    }
+
     .topbar-fade-down {
       width: 100vw;
       height: 2rem;
@@ -595,14 +623,19 @@ $topbar-height: 4.35rem;
 
     background: linear-gradient(
       0deg,
-      rgb(43, 124, 86),
       rgb(105, 43, 35),
+      rgb(43, 124, 86),
       rgb(146, 137, 85),
+      rgb(42, 107, 128),
+      rgb(160, 61, 61),
+      rgb(146, 137, 85),
+      rgb(105, 43, 35),
       rgb(42, 107, 128),
       rgb(160, 61, 61),
       rgb(0, 0, 0)
     );
     padding-bottom: 10vh;
+
     .singlesong-container {
       margin: 0 0 1vh 2vw;
       display: flex;
@@ -610,6 +643,18 @@ $topbar-height: 4.35rem;
       justify-content: flex-start;
       z-index: 0;
       width: auto;
+      animation: slidein 0.2s ease-in-out forwards;
+      opacity: 0;
+      @keyframes slidein {
+        0% {
+          margin-left: 101vw;
+          opacity: 1;
+        }
+        100% {
+          maring-left: 2vw;
+          opacity: 1;
+        }
+      }
 
       button:focus {
         //none = kauniimpi,  mutta näppiksen käyttö helpottuu defaulttina!
@@ -640,11 +685,14 @@ $topbar-height: 4.35rem;
         color: rgba(0, 0, 0, 0.5);
         transform-origin: center;
         z-index: 1;
+        cursor: pointer;
+        transition: all 0.28s ease;
       }
 
       .make-next-button:hover {
         background-color: rgba(255, 255, 255, 1);
         transform: scale(1.4);
+        color: black;
       }
 
       button {
