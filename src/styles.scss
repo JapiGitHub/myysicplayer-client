@@ -1,0 +1,703 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Bebas Neue", cursive;
+}
+
+$transition-a: all 0.4s ease;
+$border-radius-a: 1vh;
+$topbar-height: 4.35rem;
+
+@mixin debuggi($color) {
+  border: 1px solid $color;
+}
+//usage :   @include debuggi(red);
+
+.long-names {
+  //pitkät biisien nimet ei rivity
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
+}
+
+//
+//SING IN
+#sign-lock {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+
+  font-size: 5rem;
+
+  //background: linear-gradient(60deg, rgb(0, 151, 161), rgb(199, 151, 48));
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 1;
+
+  .login-filter {
+    height: 300vh;
+    width: 300vh;
+    border-radius: 100%;
+    background-image: radial-gradient(
+      rgba(0, 0, 0, 0.3),
+      rgba(21, 235, 92, 0.2),
+      rgba(255, 0, 0, 0),
+      rgba(255, 0, 0, 0)
+    );
+    position: absolute;
+    top: -20vh;
+    left: -40vw;
+    transform-origin: center;
+    z-index: 1;
+
+    animation: movearound 5s ease-in-out alternate infinite;
+    @keyframes movearound {
+      0% {
+        transform: translateX(0vw) translateY(0vh) scaleX(1);
+      }
+      33% {
+        transform: translateX(80vw) translateY(10vh) scaleX(1.2);
+      }
+
+      65% {
+        transform: translateX(0vw) translateY(50vh) scaleX(1.6);
+      }
+      100% {
+        transform: translateX(30vw) translateY(40vh) scaleX(1);
+      }
+    }
+  }
+
+  .filter-a {
+    animation: movearound 13s ease-in-out alternate infinite;
+  }
+
+  .filter-b {
+    background-image: radial-gradient(
+      rgba(0, 0, 0, 0.3),
+      rgba(6, 52, 180, 0.2),
+      rgba(255, 0, 0, 0),
+      rgba(255, 0, 0, 0)
+    );
+    top: -150vh;
+    left: -150vw;
+    animation: movearound 15s ease-in-out alternate infinite;
+    animation-delay: 3s;
+  }
+
+  #wallpaper-login {
+    position: absolute;
+    top: 0vh;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    object-fit: cover;
+    opacity: 1;
+  }
+
+  .signmenu {
+    text-shadow: 0 0 10px #ffffff;
+
+    z-index: 2;
+
+    position: absolute;
+    left: 25vw;
+    top: 20vh;
+    width: 50vw;
+    height: 65vh;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 10vh;
+    border: 2px solid white;
+    display: grid;
+    place-items: center;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+    box-shadow: 5px 18px 48px 0px rgba(0, 0, 0, 1);
+    -webkit-box-shadow: 5px 18px 48px 0px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 5px 18px 48px 0px rgba(0, 0, 0, 1);
+
+    #signin-button {
+      margin-top: 6vh;
+
+      font-size: 2rem;
+      padding: 1vw 3vw 1vh 3vw;
+      border-style: none;
+      border-radius: $border-radius-a;
+      transition: $transition-a;
+      transform: scale(1);
+      cursor: pointer;
+      background-color: rgba(255, 255, 255, 0.65);
+      transform-origin: center;
+
+      box-shadow: 5px 18px 48px 0px rgba(0, 0, 0, 0.75);
+      -webkit-box-shadow: 5px 18px 48px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 5px 18px 48px 0px rgba(0, 0, 0, 0.75);
+    }
+
+    #signin-button:hover {
+      transform-origin: left;
+      transform: scale(1.3);
+      background-color: rgba(255, 255, 255, 1);
+      transform-origin: center;
+
+      box-shadow: 5px 18px 48px 0px rgba(0, 0, 0, 1);
+      -webkit-box-shadow: 5px 18px 48px 0px rgba(0, 0, 0, 1);
+      -moz-box-shadow: 5px 18px 48px 0px rgba(0, 0, 0, 1);
+    }
+
+    .username-input-container {
+      padding-top: 1vh;
+
+      font-size: 2rem;
+      height: 12vh;
+      width: 30vw;
+      display: grid;
+      place-items: center;
+
+      #username-input {
+        width: 100%;
+        height: 100%;
+        font-size: 2rem;
+        border-radius: $border-radius-a;
+        border-style: none;
+        text-align: center;
+        font-family: "Noto Sans Mono", monospace;
+        box-shadow: 5px 12px 29px 0px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: 5px 12px 29px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 5px 12px 29px 0px rgba(0, 0, 0, 0.75);
+        transition: all 0.3s ease;
+        transform: scale(1);
+      }
+
+      #username-input:hover {
+        transform: scale(1.05);
+
+        box-shadow: 5px 12px 29px 0px rgba(0, 0, 0, 1);
+        -webkit-box-shadow: 5px 12px 29px 0px rgba(0, 0, 0, 1);
+        -moz-box-shadow: 5px 12px 29px 0px rgba(0, 0, 0, 1);
+      }
+
+      #username-input:focus {
+        outline: none;
+      }
+    }
+
+    .password-input-container {
+      padding-top: 1vh;
+      font-size: 2rem;
+      height: 12vh;
+      width: 30vw;
+      display: grid;
+      place-items: center;
+
+      #password-input {
+        width: 100%;
+        height: 100%;
+        font-size: 1.1rem;
+
+        border-radius: $border-radius-a;
+        border-style: none;
+        text-align: center;
+        font-family: "Noto Sans Mono", monospace;
+        box-shadow: 5px 12px 29px 0px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: 5px 12px 29px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 5px 12px 29px 0px rgba(0, 0, 0, 0.75);
+        transition: all 0.3s ease;
+        transform: scale(1);
+      }
+
+      #password-input:hover {
+        transform: scale(1.05);
+        box-shadow: 5px 12px 29px 0px rgba(0, 0, 0, 1);
+        -webkit-box-shadow: 5px 12px 29px 0px rgba(0, 0, 0, 1);
+        -moz-box-shadow: 5px 12px 29px 0px rgba(0, 0, 0, 1);
+      }
+      #password-input:focus {
+        outline: none;
+      }
+    }
+  }
+}
+
+.App {
+  background-color: black;
+}
+
+.all-container {
+  background-color: black;
+  color: white;
+  //overflow: hidden;
+  width: 100vw;
+  opacity: 0;
+  animation: fadein 1s ease forwards;
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  button {
+    font-size: 2.5rem;
+    padding: 0vw 1vw 0vh 1vw;
+    border-style: none;
+    border-radius: $border-radius-a;
+
+    transition: $transition-a;
+    transform: scale(1);
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.65);
+  }
+
+  button:hover {
+    transform-origin: left;
+    transform: scale(1.2);
+    background-color: rgba(255, 255, 255, 1);
+  }
+
+  //
+  //TOP BAR
+  .sticky-nav {
+    //overflow: hidden;
+
+    position: sticky;
+    top: 0;
+    left: 0;
+    font-size: 3rem;
+    width: 99vw;
+    height: 4.5rem;
+
+    background-color: black;
+    opacity: 0.9;
+    z-index: 5;
+
+    .topbar {
+      background-color: black;
+      position: absolute;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: $topbar-height;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+
+      .progressbar-container {
+        width: 80vw;
+        height: $topbar-height;
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        overflow: hidden;
+        .progressbar {
+          background: linear-gradient(90deg, rgb(0, 0, 0), rgb(4, 178, 209));
+          position: absolute;
+          top: 0;
+          left: -115vw;
+          width: 120vw;
+          height: calc(#{$topbar-height} - 0.15rem);
+          z-index: 4;
+          border-radius: 2vh;
+          transition: $transition-a;
+
+          filter: blur(3px);
+          border: 6px solid rgba(165, 32, 61, 0.7);
+
+          animation: progressbar-glow 2s alternate infinite;
+          @keyframes progressbar-glow {
+            0% {
+              opacity: 1;
+            }
+            50% {
+              opacity: 0.7;
+            }
+            100% {
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      button {
+        z-index: 9;
+        height: auto;
+        transform-origin: center;
+
+        background-color: rgba(255, 255, 255, 1);
+        opacity: 1;
+
+        margin-left: 1vw;
+      }
+
+      #next-button {
+        margin-left: 2vw;
+      }
+
+      #songname-topbar {
+        z-index: 6;
+        position: absolute;
+        top: 0vh;
+        left: 23vw;
+        margin-left: 2vw;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        height: 12vh;
+        width: 50000vw;
+        white-space: pre-wrap;
+
+        animation: scrolltitle 2000s ease infinite;
+
+        @keyframes scrolltitle {
+          0% {
+            left: 23vw;
+          }
+          100% {
+            left: -2300vw;
+          }
+        }
+      }
+
+      #songname-fade-left {
+        background: linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 1),
+          rgba(0, 0, 0, 1),
+          rgba(0, 0, 0, 0)
+        );
+        height: 4.35rem;
+        width: 40vw;
+
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 7;
+      }
+    }
+
+    .topbar-fade-down {
+      width: 100vw;
+      height: 2rem;
+      position: absolute;
+      top: calc(#{$topbar-height} + 0.15rem);
+      left: 0;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+      //jotta ei tule biisien klikkailun eteen
+      pointer-events: none;
+    }
+
+    #playqueue {
+      padding-top: calc(#{$topbar-height + 1.4rem});
+      padding-left: 1vw;
+      padding-bottom: 1vh;
+      height: auto;
+      width: 30vw;
+      margin-left: 68vw;
+      font-size: 1rem;
+      z-index: 10;
+      text-shadow: 0 0 12px #000000;
+
+      .queue-song-container {
+        display: flex;
+      }
+
+      .delete-queue-hamburger {
+        width: 50px;
+        height: 25px;
+        display: flex;
+
+        padding-bottom: 5px;
+        padding-left: 1vw;
+        padding-right: 1vw;
+        flex-direction: column;
+        justify-content: center;
+        cursor: pointer;
+        color: white;
+
+        .burger-line {
+          border-radius: 0.3vw;
+        }
+
+        aside {
+          width: 100%;
+          height: 1px;
+          background-color: rgba(255, 255, 255, 0.5);
+          transform-origin: center;
+          transition: all 0.4s ease;
+          transform: scale(1);
+        }
+      }
+
+      .delete-queue-hamburger:hover {
+        aside {
+          &:first-child {
+            height: 3px;
+            background-color: crimson;
+            transform: rotate(45deg) scale(1.2);
+          }
+
+          &:last-child {
+            height: 3px;
+
+            background-color: crimson;
+            transform: translateY(-3px) rotate(-45deg) scale(1.2);
+          }
+        }
+      }
+    }
+
+    #emptyqueue {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .addsong-transition-enter {
+      position: absolute;
+      opacity: 0;
+      top: 100vh;
+      left: 0;
+      transition: $transition-a;
+    }
+    .addsong-transition-enter-active {
+      position: absolute;
+      opacity: 1;
+      top: 0vh;
+      left: 0vw;
+      transition: $transition-a;
+    }
+    .addsong-transition-enter-done {
+      position: absolute;
+      opacity: 1;
+      top: 0vh;
+      left: 0vw;
+      transition: $transition-a;
+    }
+
+    .addsong-transition-exit {
+      position: absolute;
+      opacity: 1;
+      top: 0vh;
+      left: 0vw;
+      transition: $transition-a;
+    }
+    .addsong-transition-exit-active {
+      position: absolute;
+      opacity: 0;
+      top: 100vh;
+      left: 0;
+      transition: $transition-a;
+    }
+
+    .addsong-container {
+      //border: 2px solid blue;
+      overflow: hidden;
+      background-color: black;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 4.4rem;
+
+      border-radius: 0 0 1vh 1vh;
+
+      width: 98vw;
+      padding-right: 2vw;
+
+      .addsong-controls {
+        //border: 2px solid red;
+        background-color: black;
+        position: sticky;
+        top: 0;
+        left: 0;
+        height: auto;
+        width: 90vw;
+
+        z-index: 20;
+
+        .line {
+          margin: 4vh 5vw 3vh 5vw;
+
+          border: 0;
+          height: 3px;
+          background-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0),
+            rgba(255, 255, 255, 0.65),
+            rgba(0, 0, 0, 0)
+          );
+        }
+
+        //UPLOAD FROM DISK
+        #uploadfile-input {
+          font-family: "Bebas Neue", cursive;
+          border: none;
+          border-radius: $border-radius-a;
+          margin-left: 2vw;
+          background-color: rgb(255, 255, 255);
+          font-size: 1.5rem;
+          padding: 1vh 2vh 1vh 2vh;
+          border-style: none;
+          width: 30vw;
+          color: black;
+          cursor: pointer;
+        }
+        #uploadfile-label {
+          font-size: 2rem;
+          margin-left: 2vw;
+          color: white;
+          text-align: center;
+        }
+        .uploadButton {
+          margin-left: 2vw;
+
+          transform-origin: center;
+        }
+
+        //YT Download
+        #ytdl-input {
+          border-radius: $border-radius-a;
+          margin-left: 2vw;
+          background-color: rgb(255, 255, 255);
+          font-size: 2rem;
+          border-style: none;
+          width: 30vw;
+          color: black;
+          text-align: center;
+          cursor: pointer;
+          margin-bottom: 4vh;
+        }
+
+        #ytdl-label {
+          font-size: 2rem;
+          margin-left: 2vw;
+          color: white;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  //
+  //SONGS LIST
+  .songs-container {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding-top: 3vh;
+
+    background: linear-gradient(
+      0deg,
+      rgb(43, 124, 86),
+      rgb(105, 43, 35),
+      rgb(146, 137, 85),
+      rgb(42, 107, 128),
+      rgb(160, 61, 61),
+      rgb(0, 0, 0)
+    );
+    padding-bottom: 10vh;
+    .singlesong-container {
+      margin: 0 0 1vh 2vw;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      z-index: 0;
+      width: auto;
+
+      button:focus {
+        //none = kauniimpi,  mutta näppiksen käyttö helpottuu defaulttina!
+        //outline: none;
+      }
+      span {
+        font-size: 1rem;
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      .selected {
+        transform-origin: left;
+        background-color: rgb(0, 0, 0);
+        color: white;
+        transform: scale(1.2);
+        //text-align: left;
+        //margin-left: -2vw;
+        //padding-right: 1vw;
+      }
+
+      .make-next-button {
+        border-radius: 0.7vh;
+        font-size: 0.9rem;
+        margin-left: 0.4vw;
+        margin-right: 3vw;
+        padding: 5px 5px 5px 5px;
+        background-color: rgba(255, 255, 255, 0.3);
+        color: rgba(0, 0, 0, 0.5);
+        transform-origin: center;
+        z-index: 1;
+      }
+
+      .make-next-button:hover {
+        background-color: rgba(255, 255, 255, 1);
+        transform: scale(1.4);
+      }
+
+      button {
+        z-index: 2;
+      }
+    }
+  }
+}
+
+//
+//MOBILE / PORTRAIT
+@media (orientation: portrait) {
+  .all-container {
+    button {
+      font-size: 1.5rem;
+    }
+    .sticky-nav {
+      font-size: 2rem;
+      .addsong-container {
+        .addsong-controls {
+          height: auto;
+          padding-bottom: 2vh;
+          .line {
+          }
+
+          //UPLOAD FROM DISK
+          #uploadfile-input {
+            width: 90vw;
+          }
+          #uploadfile-label {
+          }
+          .uploadButton {
+          }
+
+          #ytdl-input {
+            width: 90vw;
+            margin: 0 0 0 2vw;
+          }
+
+          #ytdl-label {
+          }
+        }
+      }
+
+      #playqueue {
+        padding-top: 10vh;
+        height: 20vh;
+        width: 30vw;
+        margin-left: 70vw;
+        font-size: 1rem;
+        z-index: -1;
+        text-shadow: 0 0 12px #000000;
+      }
+    }
+  }
+}

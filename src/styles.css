@@ -1,0 +1,746 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Bebas Neue", cursive;
+}
+
+.long-names {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
+}
+
+#sign-lock {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-size: 5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  z-index: 1;
+}
+
+#sign-lock .login-filter {
+  height: 300vh;
+  width: 300vh;
+  border-radius: 100%;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.3), rgba(21, 235, 92, 0.2), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0));
+  position: absolute;
+  top: -20vh;
+  left: -40vw;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  z-index: 1;
+  -webkit-animation: movearound 5s ease-in-out alternate infinite;
+          animation: movearound 5s ease-in-out alternate infinite;
+}
+
+@-webkit-keyframes movearound {
+  0% {
+    -webkit-transform: translateX(0vw) translateY(0vh) scaleX(1);
+            transform: translateX(0vw) translateY(0vh) scaleX(1);
+  }
+  33% {
+    -webkit-transform: translateX(80vw) translateY(10vh) scaleX(1.2);
+            transform: translateX(80vw) translateY(10vh) scaleX(1.2);
+  }
+  65% {
+    -webkit-transform: translateX(0vw) translateY(50vh) scaleX(1.6);
+            transform: translateX(0vw) translateY(50vh) scaleX(1.6);
+  }
+  100% {
+    -webkit-transform: translateX(30vw) translateY(40vh) scaleX(1);
+            transform: translateX(30vw) translateY(40vh) scaleX(1);
+  }
+}
+
+@keyframes movearound {
+  0% {
+    -webkit-transform: translateX(0vw) translateY(0vh) scaleX(1);
+            transform: translateX(0vw) translateY(0vh) scaleX(1);
+  }
+  33% {
+    -webkit-transform: translateX(80vw) translateY(10vh) scaleX(1.2);
+            transform: translateX(80vw) translateY(10vh) scaleX(1.2);
+  }
+  65% {
+    -webkit-transform: translateX(0vw) translateY(50vh) scaleX(1.6);
+            transform: translateX(0vw) translateY(50vh) scaleX(1.6);
+  }
+  100% {
+    -webkit-transform: translateX(30vw) translateY(40vh) scaleX(1);
+            transform: translateX(30vw) translateY(40vh) scaleX(1);
+  }
+}
+
+#sign-lock .filter-a {
+  -webkit-animation: movearound 13s ease-in-out alternate infinite;
+          animation: movearound 13s ease-in-out alternate infinite;
+}
+
+#sign-lock .filter-b {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.3), rgba(6, 52, 180, 0.2), rgba(255, 0, 0, 0), rgba(255, 0, 0, 0));
+  top: -150vh;
+  left: -150vw;
+  -webkit-animation: movearound 15s ease-in-out alternate infinite;
+          animation: movearound 15s ease-in-out alternate infinite;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+
+#sign-lock #wallpaper-login {
+  position: absolute;
+  top: 0vh;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 1;
+}
+
+#sign-lock .signmenu {
+  text-shadow: 0 0 10px #ffffff;
+  z-index: 2;
+  position: absolute;
+  left: 25vw;
+  top: 20vh;
+  width: 50vw;
+  height: 65vh;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 10vh;
+  border: 2px solid white;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  box-shadow: 5px 18px 48px 0px black;
+  -webkit-box-shadow: 5px 18px 48px 0px black;
+  -moz-box-shadow: 5px 18px 48px 0px black;
+}
+
+#sign-lock .signmenu #signin-button {
+  margin-top: 6vh;
+  font-size: 2rem;
+  padding: 1vw 3vw 1vh 3vw;
+  border-style: none;
+  border-radius: 1vh;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.65);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  box-shadow: 5px 18px 48px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 5px 18px 48px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 5px 18px 48px 0px rgba(0, 0, 0, 0.75);
+}
+
+#sign-lock .signmenu #signin-button:hover {
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+  background-color: white;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  box-shadow: 5px 18px 48px 0px black;
+  -webkit-box-shadow: 5px 18px 48px 0px black;
+  -moz-box-shadow: 5px 18px 48px 0px black;
+}
+
+#sign-lock .signmenu .username-input-container {
+  padding-top: 1vh;
+  font-size: 2rem;
+  height: 12vh;
+  width: 30vw;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+#sign-lock .signmenu .username-input-container #username-input {
+  width: 100%;
+  height: 100%;
+  font-size: 2rem;
+  border-radius: 1vh;
+  border-style: none;
+  text-align: center;
+  font-family: "Noto Sans Mono", monospace;
+  box-shadow: 5px 12px 29px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 5px 12px 29px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 5px 12px 29px 0px rgba(0, 0, 0, 0.75);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+#sign-lock .signmenu .username-input-container #username-input:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  box-shadow: 5px 12px 29px 0px black;
+  -webkit-box-shadow: 5px 12px 29px 0px black;
+  -moz-box-shadow: 5px 12px 29px 0px black;
+}
+
+#sign-lock .signmenu .username-input-container #username-input:focus {
+  outline: none;
+}
+
+#sign-lock .signmenu .password-input-container {
+  padding-top: 1vh;
+  font-size: 2rem;
+  height: 12vh;
+  width: 30vw;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+#sign-lock .signmenu .password-input-container #password-input {
+  width: 100%;
+  height: 100%;
+  font-size: 1.1rem;
+  border-radius: 1vh;
+  border-style: none;
+  text-align: center;
+  font-family: "Noto Sans Mono", monospace;
+  box-shadow: 5px 12px 29px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 5px 12px 29px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 5px 12px 29px 0px rgba(0, 0, 0, 0.75);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+#sign-lock .signmenu .password-input-container #password-input:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  box-shadow: 5px 12px 29px 0px black;
+  -webkit-box-shadow: 5px 12px 29px 0px black;
+  -moz-box-shadow: 5px 12px 29px 0px black;
+}
+
+#sign-lock .signmenu .password-input-container #password-input:focus {
+  outline: none;
+}
+
+.App {
+  background-color: black;
+}
+
+.all-container {
+  background-color: black;
+  color: white;
+  width: 100vw;
+  opacity: 0;
+  -webkit-animation: fadein 1s ease forwards;
+          animation: fadein 1s ease forwards;
+}
+
+@-webkit-keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.all-container button {
+  font-size: 2.5rem;
+  padding: 0vw 1vw 0vh 1vw;
+  border-style: none;
+  border-radius: 1vh;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.65);
+}
+
+.all-container button:hover {
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  background-color: white;
+}
+
+.all-container .sticky-nav {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  font-size: 3rem;
+  width: 99vw;
+  height: 4.5rem;
+  background-color: black;
+  opacity: 0.9;
+  z-index: 5;
+}
+
+.all-container .sticky-nav .topbar {
+  background-color: black;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 4.35rem;
+  z-index: 2;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.all-container .sticky-nav .topbar .progressbar-container {
+  width: 80vw;
+  height: 4.35rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+.all-container .sticky-nav .topbar .progressbar-container .progressbar {
+  background: -webkit-gradient(linear, left top, right top, from(black), to(#04b2d1));
+  background: linear-gradient(90deg, black, #04b2d1);
+  position: absolute;
+  top: 0;
+  left: -115vw;
+  width: 120vw;
+  height: calc(4.35rem - 0.15rem);
+  z-index: 4;
+  border-radius: 2vh;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  -webkit-filter: blur(3px);
+          filter: blur(3px);
+  border: 6px solid rgba(165, 32, 61, 0.7);
+  -webkit-animation: progressbar-glow 2s alternate infinite;
+          animation: progressbar-glow 2s alternate infinite;
+}
+
+@-webkit-keyframes progressbar-glow {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes progressbar-glow {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.all-container .sticky-nav .topbar button {
+  z-index: 9;
+  height: auto;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  background-color: white;
+  opacity: 1;
+  margin-left: 1vw;
+}
+
+.all-container .sticky-nav .topbar #next-button {
+  margin-left: 2vw;
+}
+
+.all-container .sticky-nav .topbar #songname-topbar {
+  z-index: 6;
+  position: absolute;
+  top: 0vh;
+  left: 23vw;
+  margin-left: 2vw;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 12vh;
+  width: 50000vw;
+  white-space: pre-wrap;
+  -webkit-animation: scrolltitle 2000s ease infinite;
+          animation: scrolltitle 2000s ease infinite;
+}
+
+@-webkit-keyframes scrolltitle {
+  0% {
+    left: 23vw;
+  }
+  100% {
+    left: -2300vw;
+  }
+}
+
+@keyframes scrolltitle {
+  0% {
+    left: 23vw;
+  }
+  100% {
+    left: -2300vw;
+  }
+}
+
+.all-container .sticky-nav .topbar #songname-fade-left {
+  background: -webkit-gradient(linear, left top, right top, from(black), color-stop(black), to(rgba(0, 0, 0, 0)));
+  background: linear-gradient(90deg, black, black, rgba(0, 0, 0, 0));
+  height: 4.35rem;
+  width: 40vw;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 7;
+}
+
+.all-container .sticky-nav .topbar-fade-down {
+  width: 100vw;
+  height: 2rem;
+  position: absolute;
+  top: calc(4.35rem + 0.15rem);
+  left: 0;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0)), to(black));
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0), black);
+  pointer-events: none;
+}
+
+.all-container .sticky-nav #playqueue {
+  padding-top: calc(5.75rem);
+  padding-left: 1vw;
+  padding-bottom: 1vh;
+  height: auto;
+  width: 30vw;
+  margin-left: 68vw;
+  font-size: 1rem;
+  z-index: 10;
+  text-shadow: 0 0 12px #000000;
+}
+
+.all-container .sticky-nav #playqueue .queue-song-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.all-container .sticky-nav #playqueue .delete-queue-hamburger {
+  width: 50px;
+  height: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 5px;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  color: white;
+}
+
+.all-container .sticky-nav #playqueue .delete-queue-hamburger .burger-line {
+  border-radius: 0.3vw;
+}
+
+.all-container .sticky-nav #playqueue .delete-queue-hamburger aside {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.all-container .sticky-nav #playqueue .delete-queue-hamburger:hover aside:first-child {
+  height: 3px;
+  background-color: crimson;
+  -webkit-transform: rotate(45deg) scale(1.2);
+          transform: rotate(45deg) scale(1.2);
+}
+
+.all-container .sticky-nav #playqueue .delete-queue-hamburger:hover aside:last-child {
+  height: 3px;
+  background-color: crimson;
+  -webkit-transform: translateY(-3px) rotate(-45deg) scale(1.2);
+          transform: translateY(-3px) rotate(-45deg) scale(1.2);
+}
+
+.all-container .sticky-nav #emptyqueue {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.all-container .sticky-nav .addsong-transition-enter {
+  position: absolute;
+  opacity: 0;
+  top: 100vh;
+  left: 0;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.all-container .sticky-nav .addsong-transition-enter-active {
+  position: absolute;
+  opacity: 1;
+  top: 0vh;
+  left: 0vw;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.all-container .sticky-nav .addsong-transition-enter-done {
+  position: absolute;
+  opacity: 1;
+  top: 0vh;
+  left: 0vw;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.all-container .sticky-nav .addsong-transition-exit {
+  position: absolute;
+  opacity: 1;
+  top: 0vh;
+  left: 0vw;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.all-container .sticky-nav .addsong-transition-exit-active {
+  position: absolute;
+  opacity: 0;
+  top: 100vh;
+  left: 0;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+.all-container .sticky-nav .addsong-container {
+  overflow: hidden;
+  background-color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 4.4rem;
+  border-radius: 0 0 1vh 1vh;
+  width: 98vw;
+  padding-right: 2vw;
+}
+
+.all-container .sticky-nav .addsong-container .addsong-controls {
+  background-color: black;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: auto;
+  width: 90vw;
+  z-index: 20;
+}
+
+.all-container .sticky-nav .addsong-container .addsong-controls .line {
+  margin: 4vh 5vw 3vh 5vw;
+  border: 0;
+  height: 3px;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0)), color-stop(rgba(255, 255, 255, 0.65)), to(rgba(0, 0, 0, 0)));
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.65), rgba(0, 0, 0, 0));
+}
+
+.all-container .sticky-nav .addsong-container .addsong-controls #uploadfile-input {
+  font-family: "Bebas Neue", cursive;
+  border: none;
+  border-radius: 1vh;
+  margin-left: 2vw;
+  background-color: white;
+  font-size: 1.5rem;
+  padding: 1vh 2vh 1vh 2vh;
+  border-style: none;
+  width: 30vw;
+  color: black;
+  cursor: pointer;
+}
+
+.all-container .sticky-nav .addsong-container .addsong-controls #uploadfile-label {
+  font-size: 2rem;
+  margin-left: 2vw;
+  color: white;
+  text-align: center;
+}
+
+.all-container .sticky-nav .addsong-container .addsong-controls .uploadButton {
+  margin-left: 2vw;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+}
+
+.all-container .sticky-nav .addsong-container .addsong-controls #ytdl-input {
+  border-radius: 1vh;
+  margin-left: 2vw;
+  background-color: white;
+  font-size: 2rem;
+  border-style: none;
+  width: 30vw;
+  color: black;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 4vh;
+}
+
+.all-container .sticky-nav .addsong-container .addsong-controls #ytdl-label {
+  font-size: 2rem;
+  margin-left: 2vw;
+  color: white;
+  text-align: center;
+}
+
+.all-container .songs-container {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-top: 3vh;
+  background: -webkit-gradient(linear, left bottom, left top, from(#2b7c56), color-stop(#692b23), color-stop(#928955), color-stop(#2a6b80), color-stop(#a03d3d), to(black));
+  background: linear-gradient(0deg, #2b7c56, #692b23, #928955, #2a6b80, #a03d3d, black);
+  padding-bottom: 10vh;
+}
+
+.all-container .songs-container .singlesong-container {
+  margin: 0 0 1vh 2vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  z-index: 0;
+  width: auto;
+}
+
+.all-container .songs-container .singlesong-container span {
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.all-container .songs-container .singlesong-container .selected {
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  background-color: black;
+  color: white;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.all-container .songs-container .singlesong-container .make-next-button {
+  border-radius: 0.7vh;
+  font-size: 0.9rem;
+  margin-left: 0.4vw;
+  margin-right: 3vw;
+  padding: 5px 5px 5px 5px;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: rgba(0, 0, 0, 0.5);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  z-index: 1;
+}
+
+.all-container .songs-container .singlesong-container .make-next-button:hover {
+  background-color: white;
+  -webkit-transform: scale(1.4);
+          transform: scale(1.4);
+}
+
+.all-container .songs-container .singlesong-container button {
+  z-index: 2;
+}
+
+@media (orientation: portrait) {
+  .all-container button {
+    font-size: 1.5rem;
+  }
+  .all-container .sticky-nav {
+    font-size: 2rem;
+  }
+  .all-container .sticky-nav .addsong-container .addsong-controls {
+    height: auto;
+    padding-bottom: 2vh;
+  }
+  .all-container .sticky-nav .addsong-container .addsong-controls #uploadfile-input {
+    width: 90vw;
+  }
+  .all-container .sticky-nav .addsong-container .addsong-controls #ytdl-input {
+    width: 90vw;
+    margin: 0 0 0 2vw;
+  }
+  .all-container .sticky-nav #playqueue {
+    padding-top: 10vh;
+    height: 20vh;
+    width: 30vw;
+    margin-left: 70vw;
+    font-size: 1rem;
+    z-index: -1;
+    text-shadow: 0 0 12px #000000;
+  }
+}
+/*# sourceMappingURL=styles.css.map */
