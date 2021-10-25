@@ -1,12 +1,12 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Sound from "react-sound";
 import "./styles.scss";
-import { CSSTransition } from "react-transition-group";
 import SignIn from "./components/SignIn";
 import AllSongs from "./components/AllSongs";
 import TopNavBar from "./components/TopNavBar";
+
+import Sound from "react-sound";
 
 //import { createWriteStream } from "fs";
 
@@ -45,28 +45,43 @@ function App() {
 
   //JWT & SIGN-IN
   const [tokenValid, setTokenValid] = useState(false);
-  const [urlToken, setUrlToken] = useState("initialblankwrong");
+  const localstorageToken: string | null =
+    localStorage.getItem("myysicplayer-token");
+  const [urlToken, setUrlToken] = useState(
+    localstorageToken !== null ? localstorageToken : "initialblankwrong"
+  );
 
-  //get song/URLs list
+  const getSongList = () => {
+    axios
+      .get<string[]>("http://localhost:2000/", {
+        headers: { token: urlToken },
+      })
+      .then(function (response) {
+        // success
+        setSongList(response.data);
+        setTokenValid(true);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log("TOKEN: ", urlToken);
+        console.error("couldnt get songlist", error);
+        //DEBUG
+        //TOKEN:  initialblankwrong
+        //toimii kuitenkin jos saa esim seivaamalla renderöimään uudestaan reactin
+      });
+  };
+
+  //get song/URLs list first time
   useEffect(() => {
-    if (urlToken != "initialblankwrong") {
-      axios
-        .get<any>("http://localhost:2000/", {
-          headers: { token: urlToken },
-        })
-        .then(function (response) {
-          // success
-          setSongList(response.data);
-          setTokenValid(true);
-        })
-        .catch(function (error) {
-          // handle error
-          console.log("TOKEN: ", urlToken);
-          console.error("couldnt get songlist", error);
-          //DEBUG
-          //TOKEN:  initialblankwrong
-          //toimii kuitenkin jos saa esim seivaamalla renderöimään uudestaan reactin
-        });
+    if (tokenValid) {
+      getSongList();
+    }
+  }, []);
+
+  //get song/URLs list every time new urlToken
+  useEffect(() => {
+    if (urlToken !== "initialblankwrong") {
+      getSongList();
     }
   }, [urlToken]);
 
@@ -143,6 +158,15 @@ function App() {
 
   return (
     <div className="App">
+      <Sound
+        url={`http://${window.location.hostname}:2000/bigplaylist/${selectedSong}?token=${urlToken}`}
+        playStatus={playingOrPaused}
+        onLoading={loadingSong}
+        autoLoad={false}
+        onFinishedPlaying={nextSong}
+        playFromPosition={songElapsed}
+        onPlaying={playingSong}
+      />
       {tokenValid ? (
         <div className="all-container">
           <TopNavBar

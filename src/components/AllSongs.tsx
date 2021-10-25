@@ -1,5 +1,4 @@
 import React from "react";
-import Sound from "react-sound";
 
 export default function AllSongs({
   playQueue,
@@ -19,36 +18,27 @@ export default function AllSongs({
   makeNext,
   searchText,
 }: any) {
+  //TOIMII
   return (
     <>
       <section className="songs-container">
         {songList
-          ? songList.map((song: string, idx: number) => {
-              if (song.includes(searchText)) {
+          ? songList
+              .filter((song: string) => {
+                return (
+                  song === selectedSong ||
+                  song.toLowerCase().includes(searchText.toLowerCase())
+                );
+              })
+              .map((song: string, idx: number) => {
                 return (
                   <article
                     className="singlesong-container"
                     key={idx}
                     style={{
-                      animationDelay:
-                        idx < 35 ? idx * 0.04 + 0.4 + "s" : 1.5 + "s",
+                      animationDelay: idx < 35 ? idx * 0.04 + "s" : 0 + "s",
                     }}
                   >
-                    <Sound
-                      url={`http://${window.location.hostname}:2000/bigplaylist/${song}?token=${urlToken}`}
-                      playStatus={
-                        selectedSong === song && playingOrPaused === "PLAYING"
-                          ? "PLAYING"
-                          : "STOPPED"
-                      }
-                      onLoading={loadingSong}
-                      autoLoad={false}
-                      onFinishedPlaying={nextSong}
-                      playFromPosition={
-                        selectedSong === song ? songElapsed : undefined
-                      }
-                      onPlaying={playingSong}
-                    />
                     <button
                       className={
                         selectedSong === song
@@ -77,8 +67,7 @@ export default function AllSongs({
                     </div>
                   </article>
                 );
-              }
-            })
+              })
           : null}
       </section>
     </>

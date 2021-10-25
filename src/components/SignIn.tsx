@@ -3,20 +3,18 @@ import axios from "axios";
 import useWindowOrientation from "use-window-orientation";
 
 export default function SignIn({ setTokenValid, setUrlToken }: any) {
-  const { orientation, portrait, landscape } = useWindowOrientation();
+  const { orientation } = useWindowOrientation();
 
   const [usernameInput, setUsernameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
 
-  const [randomPicture, setRandomPicture] = useState(
-    Math.floor(Math.random() * 3) + 1
-  );
+  const [randomPicture] = useState(Math.floor(Math.random() * 3) + 1);
 
   const loginClick = (e: any) => {
     e.preventDefault();
 
     axios
-      .get("http://localhost:2000/login", {
+      .get<any>("http://localhost:2000/login", {
         headers: {
           username: usernameInput,
           password: passwordInput,

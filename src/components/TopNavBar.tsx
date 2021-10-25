@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 import axios from "axios";
 
@@ -33,7 +33,8 @@ export default function TopNavBar({
   //UPLOAD TO NODE FROM DISK
   const uploadToNode = (event: any) => {
     console.log("uppload init in react");
-    const data: any = new FormData();
+    const data: FormData = new FormData();
+    console.error(" dataform type ::: ", typeof data);
     data.append("file", uploadFile);
 
     //et voi console logata data:a koska selain ei ymmärrä sitä. httpbin kautta voi testata onneksi
@@ -42,7 +43,10 @@ export default function TopNavBar({
       .catch((err) => console.log(err)); */
     axios
       .post<any>("http://localhost:2000/upload", data)
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        setSongList([...songList, res.data]);
+      })
       .catch((err) => console.log(err));
   };
 
@@ -66,7 +70,7 @@ export default function TopNavBar({
   const deleteFromQueue = (song: string) => {
     setPlayQueue(
       playQueue.filter((queued: string) => {
-        return queued != song;
+        return queued !== song;
       })
     );
   };
@@ -91,7 +95,7 @@ export default function TopNavBar({
               style={{
                 /* 80vw : container width 
                     115 :     progressbar left = -120vw*/
-                left: (songElapsed / selectedSongLength) * 80 - 115 + "vw",
+                left: (songElapsed / selectedSongLength) * 80 - 80 + "vw",
               }}
             ></aside>
           </div>
@@ -122,9 +126,11 @@ export default function TopNavBar({
           play queue
           {playQueue.map((queuedSong: string, idx: number) => {
             return (
-              <article className="queue-song-container">
-                #{String(idx + 1).padStart(2, "0")}&nbsp;
-                {queuedSong.slice(0, queuedSong.length - 4)}
+              <div className="queue-container">
+                <article className="queue-song-container long-names">
+                  #{String(idx + 1).padStart(2, "0")}&nbsp;
+                  {queuedSong.slice(0, queuedSong.length - 4)}
+                </article>
                 <div
                   className="delete-queue-hamburger"
                   onClick={() => {
@@ -134,7 +140,7 @@ export default function TopNavBar({
                   <aside className="burger-line"></aside>
                   <aside className="burger-line"></aside>
                 </div>
-              </article>
+              </div>
             );
           })}
           {playQueue.length === 0 ? <div id="emptyqueue">empty</div> : null}
