@@ -95,7 +95,7 @@ export default function TopNavBar({
               style={{
                 /* 80vw : container width 
                     115 :     progressbar left = -120vw*/
-                left: (songElapsed / selectedSongLength) * 80 - 80 + "vw",
+                left: (songElapsed / selectedSongLength) * 77 - 76.5 + "vw",
               }}
             ></aside>
           </div>

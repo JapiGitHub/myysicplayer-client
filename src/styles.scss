@@ -295,7 +295,7 @@ $topbar-height-mob: 15vh;
       align-items: center;
 
       .progressbar-container {
-        width: 80vw;
+        width: 77vw;
         height: $topbar-height;
         position: absolute;
         top: 0;
@@ -307,8 +307,8 @@ $topbar-height-mob: 15vh;
           position: absolute;
           top: 0;
           left: -115vw;
-          width: 80vw;
-          height: calc(#{$topbar-height} - 0.15rem);
+          width: 77vw;
+          height: calc(#{$topbar-height});
           z-index: 4;
           border-radius: 2vh;
           transition: $transition-a;
@@ -322,7 +322,7 @@ $topbar-height-mob: 15vh;
               opacity: 1;
             }
             50% {
-              opacity: 0.7;
+              opacity: 0.8;
             }
             100% {
               opacity: 1;
@@ -433,7 +433,10 @@ $topbar-height-mob: 15vh;
       padding-top: calc(#{$topbar-height + 1.4rem});
       padding-left: 1vw;
       padding-bottom: 1vh;
+
+      //automaattisesti laskee alas mustaa gradientverhoa lisätessä queueen!
       height: auto;
+
       width: 30vw;
       margin-left: 68vw;
       font-size: 1rem;
@@ -447,16 +450,16 @@ $topbar-height-mob: 15vh;
 
       .queue-song-container {
         display: flex;
+        align-items: center;
       }
 
       .delete-queue-hamburger {
-        width: 50px;
-        height: 25px;
+        width: 1vw;
+        height: 1vw;
         display: flex;
 
-        padding-bottom: 5px;
-        padding-left: 1vw;
-        padding-right: 1vw;
+        margin-left: 0.7vw;
+        padding-right: 0vw;
         flex-direction: column;
         justify-content: center;
         cursor: pointer;
@@ -468,7 +471,7 @@ $topbar-height-mob: 15vh;
 
         aside {
           width: 100%;
-          height: 1px;
+          height: 0.1vh;
           background-color: rgba(255, 255, 255, 0.5);
           transform-origin: center;
           transition: all 0.4s ease;
@@ -666,10 +669,15 @@ $topbar-height-mob: 15vh;
   }
 }
 
-//
-//
-//
-//MOBILE / PORTRAIT
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+//                    MOBILE / PORTRAIT                           //
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////
 @media (orientation: portrait) {
   .App {
     .all-container {
@@ -681,7 +689,8 @@ $topbar-height-mob: 15vh;
         font-size: 2rem;
 
         button {
-          height: 10vh;
+          margin-top: 1vh;
+          height: 8vh;
           background-color: rgba(255, 255, 255, 0.35);
         }
 
@@ -805,7 +814,7 @@ $topbar-height-mob: 15vh;
 
           font-size: auto;
 
-          top: calc(#{$topbar-height-mob} - 12vh);
+          top: calc(#{$topbar-height-mob} - 13vh);
 
           z-index: 99;
 
@@ -850,6 +859,37 @@ $topbar-height-mob: 15vh;
 
     .songs-container {
       margin-top: calc(#{$topbar-height-mob} - 3vh);
+    }
+  }
+}
+
+///////////////////////////////////////////////////////
+//                                                   //
+//                  4k support                       //
+//                                                   //
+///////////////////////////////////////////////////////
+@media screen and (min-width: 2100px) {
+  .all-container {
+    button {
+      border-radius: 0.2vw;
+    }
+
+    .sticky-nav {
+      .topbar {
+        .progressbar-container {
+          .progressbar {
+            border-radius: 0.6vw;
+          }
+        }
+      }
+    }
+
+    .songs-container {
+      .singlesong-container {
+        .make-next-button {
+          border-radius: 0.15vw;
+        }
+      }
     }
   }
 }
