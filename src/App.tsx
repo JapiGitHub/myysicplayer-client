@@ -8,8 +8,6 @@ import TopNavBar from "./components/TopNavBar";
 
 import Sound from "react-sound";
 
-//import { createWriteStream } from "fs";
-
 function App() {
   interface songObje {
     bytesLoaded: number;
