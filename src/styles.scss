@@ -446,6 +446,7 @@ $topbar-height-mob: 15vh;
       .queue-container {
         display: flex;
         flex-direction: row;
+        align-items: center;
       }
 
       .queue-song-container {
