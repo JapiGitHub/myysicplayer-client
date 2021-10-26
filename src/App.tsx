@@ -84,21 +84,15 @@ function App() {
   }, [urlToken]);
 
   useEffect(() => {
-    //TÄHÄN TOKEN LÄHETYS
-
-    //scrolling title
-    //2000 nimen lista jota scrollataan. ei pitäs loppua kesken vaikka ois kuinka pitkä biisi xD
+    //3000 nimen lista jota scrollataan. ei pitäs loppua kesken vaikka ois kuinka pitkä biisi xD ka riippuu mobilessa kuinka monta riviä tulee titlejä. esim 4k näyttö portrait modessa on mooonta
     //react-text-scroll löytyy npm:stä, mut siinä ei voinu säätää et kuinka lyhyt väli tekstien välillä oli.
-    const lista: number[] = Array.from(Array(2000).keys());
-    const montaTitles: string = lista
-      .map((i: any) => {
-        return selectedSong.slice(0, selectedSong.length - 4);
-      })
-      .join("             ☁️              ");
-    //jotta monta speissiä toimii ni CSS :       #songname-topbar {white-space: pre-wrap;}
-    setScrollingTitle(montaTitles);
+    setScrollingTitle(
+      `${selectedSong.slice(
+        0,
+        selectedSong.length - 4
+      )}             ☁️              `.repeat(3000)
+    );
 
-    //progressbar alkaa alusta
     setSongElapsed(0);
   }, [selectedSong]);
 

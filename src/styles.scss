@@ -48,7 +48,7 @@ $topbar-height-mob: 15vh;
     border-radius: 100%;
     background-image: radial-gradient(
       rgba(0, 0, 0, 0.3),
-      rgba(21, 235, 92, 0.2),
+      rgba(21, 235, 92, 0.1),
       rgba(255, 0, 0, 0),
       rgba(255, 0, 0, 0)
     );
@@ -539,7 +539,6 @@ $topbar-height-mob: 15vh;
     }
 
     .addsong-container {
-      //border: 2px solid blue;
       overflow: hidden;
       background-color: black;
       display: flex;
@@ -548,10 +547,17 @@ $topbar-height-mob: 15vh;
 
       border-radius: 0 0 1vh 1vh;
 
+      font-size: 3rem;
+
       width: 98vw;
       padding-right: 2vw;
 
       .addsong-controls {
+        padding-top: 2vh;
+        padding-bottom: 2vh;
+
+        font-size: 3rem;
+
         //border: 2px solid red;
         background-color: black;
         position: sticky;
@@ -562,11 +568,30 @@ $topbar-height-mob: 15vh;
 
         z-index: 20;
 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        input {
+          background-color: rgba(255, 255, 255, 0.25);
+
+          width: 70vw;
+          font-size: 2rem;
+          transition: all 0.5s ease;
+          border-radius: $border-radius-a;
+          cursor: pointer;
+        }
+
+        input:hover {
+          background-color: rgba(255, 255, 255, 0.95);
+        }
+
         .line {
           margin: 4vh 5vw 3vh 5vw;
 
           border: 0;
           height: 3px;
+          width: 60vw;
           background-image: linear-gradient(
             to right,
             rgba(0, 0, 0, 0),
@@ -707,17 +732,13 @@ $topbar-height-mob: 15vh;
             #uploadfile-input {
               width: 90vw;
             }
-            #uploadfile-label {
-            }
-            .uploadButton {
-            }
 
             #ytdl-input {
               width: 90vw;
               margin: 0 0 0 2vw;
             }
-
-            #ytdl-label {
+            input {
+              font-size: 1.5rem;
             }
           }
         }

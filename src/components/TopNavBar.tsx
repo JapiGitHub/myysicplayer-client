@@ -50,17 +50,16 @@ export default function TopNavBar({
       .catch((err) => console.log(err));
   };
 
-  //SEND YOUTUBE LINK TO BE DOWNLOADED BY NODE
+  //SEND YOUTUBE / SOUNDCLOUD LINK TO BE DOWNLOADED BY NODE
   const uploadFromYT = () => {
     axios
       .post("http://localhost:2000/ytdl", {
         url: ytdlUrl,
-        title: "tahansenimi",
       })
       //DEBUG
       .then(function (response) {
-        console.log("YTDL RESPONSE : ", response);
-        setSongList([...songList, response.data]);
+        console.log("YTDL RESPONSE : ", response.data);
+        setSongList([response.data, ...songList]);
       })
       .catch(function (error) {
         console.log(error);
