@@ -334,7 +334,7 @@ $topbar-height-mob: 15vh;
     height: 40vh;
     position: absolute;
     bottom: -40vh;
-    right: -2vw0;
+    right: -4vw;
     background-color: white;
     transform: rotate(-3deg);
     z-index: 999;
@@ -916,6 +916,38 @@ $topbar-height-mob: 15vh;
 ////////////////////////////////////////////////////////////////////
 @media (orientation: portrait) {
   .App {
+    #sign-lock {
+      font-size: 2rem;
+
+      .signmenu {
+        border-radius: 4vh;
+        width: 90vw;
+        left: 5vw;
+
+        .username-input-container {
+          font-size: 1.3rem;
+        }
+
+        .password-input-container {
+          font-size: 1.3rem;
+        }
+      }
+
+      .lowbar-container {
+        font-size: 1rem;
+        @keyframes lowbar-start {
+          0% {
+            opacity: 0;
+            bottom: -38vh;
+          }
+          100% {
+            opacity: 1;
+            bottom: -35vh;
+          }
+        }
+      }
+    }
+
     .all-container {
       button {
         font-size: 1.9rem;
