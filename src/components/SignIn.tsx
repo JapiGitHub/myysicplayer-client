@@ -83,16 +83,13 @@ export default function SignIn({ setTokenValid, setUrlToken }: any) {
               viewBox="0 0 46 27"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              onClick={(e) => {
+                e.preventDefault();
+                setTokenValid(true);
+                loginClick(e);
+              }}
             >
-              <g
-                id="svg-lock"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setTokenValid(true);
-                  loginClick(e);
-                }}
-                clipPath="url(#clip0_1:12)"
-              >
+              <g id="svg-lock" clipPath="url(#clip0_1:12)">
                 <g id="avain">
                   <path
                     id="Vector"
