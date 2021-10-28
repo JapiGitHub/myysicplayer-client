@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { CSSTransition } from "react-transition-group";
 import axios from "axios";
 
@@ -42,7 +42,7 @@ export default function TopNavBar({
       .then((res) => console.log(res))
       .catch((err) => console.log(err)); */
     axios
-      .post<any>("http://localhost:2000/upload", data)
+      .post<any>("http://13.48.136.183:2000/upload", data)
       .then((res) => {
         console.log(res);
         setSongList([...songList, res.data]);
@@ -53,7 +53,7 @@ export default function TopNavBar({
   //SEND YOUTUBE / SOUNDCLOUD LINK TO BE DOWNLOADED BY NODE
   const uploadFromYT = () => {
     axios
-      .post("http://localhost:2000/ytdl", {
+      .post("http://13.48.136.183:2000/ytdl", {
         url: ytdlUrl,
       })
       //DEBUG

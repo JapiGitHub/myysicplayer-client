@@ -51,7 +51,7 @@ function App() {
 
   const getSongList = () => {
     axios
-      .get<string[]>("http://localhost:2000/", {
+      .get<string[]>("http://13.48.136.183:2000/", {
         headers: { token: urlToken },
       })
       .then(function (response) {
@@ -70,17 +70,21 @@ function App() {
   };
 
   //get song/URLs list first time
+
   useEffect(() => {
     if (tokenValid) {
       getSongList();
     }
+    // eslint-disable-next-line
   }, []);
 
   //get song/URLs list every time new urlToken
+
   useEffect(() => {
     if (urlToken !== "initialblankwrong") {
       getSongList();
     }
+    // eslint-disable-next-line
   }, [urlToken]);
 
   useEffect(() => {
@@ -151,7 +155,7 @@ function App() {
   return (
     <div className="App">
       <Sound
-        url={`http://${window.location.hostname}:2000/bigplaylist/${selectedSong}?token=${urlToken}`}
+        url={`http://13.48.136.183:2000/bigplaylist/${selectedSong}?token=${urlToken}`}
         playStatus={playingOrPaused}
         onLoading={loadingSong}
         autoLoad={false}

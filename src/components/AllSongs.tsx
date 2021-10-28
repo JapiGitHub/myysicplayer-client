@@ -36,7 +36,7 @@ export default function AllSongs({
                     className="singlesong-container"
                     key={idx}
                     style={{
-                      animationDelay: idx < 35 ? idx * 0.04 + "s" : 0 + "s",
+                      animationDelay: idx < 35 ? idx * 0.06 + "s" : 0 + "s",
                     }}
                   >
                     <button
