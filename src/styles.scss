@@ -809,8 +809,10 @@ $topbar-height-mob: 15vh;
     display: flex;
     flex-direction: column;
     padding-top: 3vh;
-
-    min-height: 500vh;
+    width: 100vw;
+    height: auto;
+    //react komponentissa style={{height = singlesong-container height * näytettävät biisit kpl
+    min-height: 100vh;
 
     background: linear-gradient(
       0deg,
@@ -834,6 +836,7 @@ $topbar-height-mob: 15vh;
       justify-content: flex-start;
       z-index: 0;
       width: auto;
+      height: 6vh;
       animation: slidein 0.2s ease-in-out forwards;
       opacity: 0;
       @keyframes slidein {
@@ -890,6 +893,20 @@ $topbar-height-mob: 15vh;
         z-index: 2;
       }
     }
+  }
+
+  .short-songlist {
+    background: linear-gradient(
+      0deg,
+      rgb(105, 43, 35),
+      rgb(42, 107, 128),
+      rgb(160, 61, 61),
+      rgb(0, 0, 0)
+    );
+  }
+
+  .no-search-list {
+    background: linear-gradient(0deg, rgb(160, 61, 61), rgb(0, 0, 0));
   }
 }
 

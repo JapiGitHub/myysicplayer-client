@@ -1,27 +1,50 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 export default function AllSongs({
   playQueue,
   songList,
-  songElapsed,
   selectedSong,
-  playingOrPaused,
-  urlToken,
-  setSongElapsed,
   setSelectedSong,
-  setPlayQueue,
   setPlayingOrPaused,
-  setSelectedSongLength,
-  nextSong,
-  loadingSong,
-  playingSong,
   makeNext,
   searchText,
 }: any) {
-  //TOIMII
+  const [totalSongsVisible, setTotalSongsVisible] = useState(777);
+
+  //biisi listan CSS-HEIGHT style={{}} määritys. haettaessa lista tietenkin pienenee aina.
+  //tehty oma looppi tähän erilleen noista samanlaisista JSX loopeista jotta renderöintejä olis vähemmän.
+  useEffect(() => {
+    let count = 0;
+
+    songList
+      .filter((song: string) => {
+        return (
+          song === selectedSong ||
+          song.toLowerCase().includes(searchText.toLowerCase())
+        );
+      })
+      .map((item: string, idx: number) => {
+        count = count + 1;
+      });
+
+    setTotalSongsVisible(count);
+  }, [searchText]);
+
   return (
     <>
-      <section className="songs-container">
+      <section
+        className={(() => {
+          switch (true) {
+            case totalSongsVisible >= 35 && totalSongsVisible <= 100:
+              return "songs-container short-songlist";
+            case totalSongsVisible < 35:
+              return "songs-container no-search-list";
+            default:
+              return "songs-container";
+          }
+        })()}
+        style={{ height: totalSongsVisible * 6.4 + 10 + "vh" }}
+      >
         {songList
           ? songList
               .filter((song: string) => {

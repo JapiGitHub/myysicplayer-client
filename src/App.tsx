@@ -175,13 +175,9 @@ function App() {
             playQueue={playQueue}
             setUploadFile={setUploadFile}
             setYtdlUrl={setYtdlUrl}
-            setSongElapsed={setSongElapsed}
-            setSelectedSong={setSelectedSong}
             setPlayQueue={setPlayQueue}
             songList={songList}
             setSongList={setSongList}
-            playingOrPaused={playingOrPaused}
-            setPlayingOrPaused={setPlayingOrPaused}
             uploadFile={uploadFile}
             ytdlUrl={ytdlUrl}
             nextSong={nextSong}
@@ -193,18 +189,9 @@ function App() {
           <AllSongs
             playQueue={playQueue}
             songList={songList}
-            songElapsed={songElapsed}
             selectedSong={selectedSong}
-            playingOrPaused={playingOrPaused}
-            urlToken={urlToken}
-            setSongElapsed={setSongElapsed}
             setSelectedSong={setSelectedSong}
-            setPlayQueue={setPlayQueue}
             setPlayingOrPaused={setPlayingOrPaused}
-            setSelectedSongLength={setSelectedSongLength}
-            nextSong={nextSong}
-            loadingSong={loadingSong}
-            playingSong={playingSong}
             makeNext={makeNext}
             searchText={searchText}
           />
