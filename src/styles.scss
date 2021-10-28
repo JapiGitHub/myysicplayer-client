@@ -492,7 +492,7 @@ $topbar-height-mob: 15vh;
       align-items: center;
 
       .progressbar-container {
-        width: 77vw;
+        width: 90vw;
         height: $topbar-height;
         position: absolute;
         top: 0;
@@ -504,7 +504,7 @@ $topbar-height-mob: 15vh;
           position: absolute;
           top: 0;
           left: -115vw;
-          width: 77vw;
+          width: 90vw;
           height: calc(#{$topbar-height});
           z-index: 4;
           border-radius: 2vh;
@@ -513,7 +513,7 @@ $topbar-height-mob: 15vh;
           filter: blur(3px);
           border: 6px solid rgba(165, 32, 61, 0.7);
 
-          animation: progressbar-glow 2s alternate infinite;
+          animation: progressbar-glow 1s alternate infinite;
           @keyframes progressbar-glow {
             0% {
               opacity: 1;
@@ -568,12 +568,7 @@ $topbar-height-mob: 15vh;
       }
 
       #songname-fade-left {
-        background: linear-gradient(
-          90deg,
-          rgba(0, 0, 0, 1),
-          rgba(0, 0, 0, 1),
-          rgba(0, 0, 0, 0)
-        );
+        background: linear-gradient(90deg, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
         height: 4.35rem;
         width: 40vw;
 
@@ -1035,10 +1030,15 @@ $topbar-height-mob: 15vh;
         }
 
         .search-input:hover {
-          right: 4vw;
-          top: calc(#{$topbar-height-mob} - 3vh);
+          border-radius: 1.5vw;
 
-          background-color: rgba(255, 255, 255, 0.85);
+          top: calc(#{$topbar-height-mob} - 13vh);
+
+          right: 4vw;
+
+          height: 8vh;
+
+          background-color: rgba(255, 255, 255, 0.9);
 
           width: 93vw;
           font-size: 3rem;
@@ -1096,6 +1096,12 @@ $topbar-height-mob: 15vh;
 
     .songs-container {
       margin-top: calc(#{$topbar-height-mob} - 3vh);
+      .singlesong-container {
+        button {
+          height: 100%;
+          font-size: 2.2rem;
+        }
+      }
     }
   }
 }
@@ -1123,6 +1129,10 @@ $topbar-height-mob: 15vh;
 
     .songs-container {
       .singlesong-container {
+        button {
+          height: 100%;
+          font-size: 2.9rem;
+        }
         .make-next-button {
           border-radius: 0.15vw;
         }

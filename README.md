@@ -15,8 +15,7 @@ Latasin pythonilla youtuben ja soundcloudin soittolistat aluksi local diskille. 
 ---
 
 > Minimalistinen: vain ne ominaisuudet mitä käytän eli _nextRandom, pause, search, addSong, queue, progressbar ja nopea login_
->
-> > (tokenit on pitkäikäisiä, eli jos localStoragesta löytyy, ni ei tarvi näpytellä).
+> (tokenit on pitkäikäisiä, eli jos localStoragesta löytyy, ni ei tarvi näpytellä).
 >
 > normal, portrait/mobile ja 4K modes supported.
 >
@@ -32,7 +31,7 @@ _Tää on lähinnä oppimisen takia AWS:ssä, koska oikeaan omaan käyttöön mu
 
 Tekeillä:
 
-- searchissa varsinkin toi tausta jatkuu liian pitkäksi. eli tee komponenttiin height={{laske se näytettävien biisien määrän mukaan}}
+- **DONE**searchissa varsinkin toi tausta jatkuu liian pitkäksi. eli tee komponenttiin height={{laske se näytettävien biisien määrän mukaan}}, mutta älä tee ton laskun mappia JSX:ssä jotta ei renderöi turhaan..
 - **DONE**: AWS EC2 serveri/deploy + NGINX
 - **DONE**: soundcloud lataus URLista myös, mulla on jossain tähän runko jo valmiina.
 - **DONE**: new users signuppia en luonnollisestikkaan ole tekemässä koska private use xD
