@@ -24,6 +24,7 @@ Latasin pythonilla youtuben ja soundcloudin soittolistat aluksi local diskille. 
 ---
 
 _(clientti ja serveri jaettu omiin repoihin. git log on lyhyt koska mulla oli vahingossa livahtanut jossain kohtaa .mp4 tiedostoja gitignoren ohi gigoja joten alotin vaa uudestaan ton gitin.)_
+https://github.com/JapiGitHub/myysicplayer-server
 
 _Tää on lähinnä oppimisen takia AWS:ssä, koska oikeaan omaan käyttöön mulla on vaan ylimääräinen läppäri joka hostaa sen ilmaiseksi tehokkaalla koneella (versus AWS free-tier microlla)._
 
@@ -31,6 +32,7 @@ _Tää on lähinnä oppimisen takia AWS:ssä, koska oikeaan omaan käyttöön mu
 
 Tekeillä:
 
+- myysic.xyz ostettu 1$:lla xD joten pitää vielä se domainnimi ja SSL hoitaa tohon, ni sit alkais olee valmista?
 - **DONE**: searchissa varsinkin toi tausta jatkuu liian pitkäksi. eli tee komponenttiin height={{laske se näytettävien biisien määrän mukaan}}, mutta älä tee ton laskun mappia JSX:ssä jotta ei renderöi turhaan..
 - **DONE**: AWS EC2 serveri/deploy + NGINX
 - **DONE**: soundcloud lataus URLista myös, mulla on jossain tähän runko jo valmiina.
