@@ -51,7 +51,7 @@ function App() {
 
   const getSongList = () => {
     axios
-      .get<string[]>("https://myysic.xyz:443/getlist", {
+      .get<string[]>("https://myysic.xyz:443/api/getlist", {
         headers: { token: urlToken },
       })
       .then(function (response) {
@@ -155,7 +155,7 @@ function App() {
   return (
     <div className="App">
       <Sound
-        url={`https://myysic.xyz:443/bigplaylist/${selectedSong}?token=${urlToken}`}
+        url={`https://myysic.xyz:443/api/bigplaylist/${selectedSong}?token=${urlToken}`}
         playStatus={playingOrPaused}
         onLoading={loadingSong}
         autoLoad={false}
