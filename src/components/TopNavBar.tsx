@@ -38,7 +38,7 @@ export default function TopNavBar({
       .then((res) => console.log(res))
       .catch((err) => console.log(err)); */
     axios
-      .post<any>("http://13.48.136.183:2000/upload", data)
+      .post<any>("https://myysic.xyz:443/api/upload", data)
       .then((res) => {
         console.log(res);
         setSongList([...songList, res.data]);
@@ -49,7 +49,7 @@ export default function TopNavBar({
   //SEND YOUTUBE / SOUNDCLOUD LINK TO BE DOWNLOADED BY NODE
   const uploadFromYT = () => {
     axios
-      .post("http://13.48.136.183:2000/ytdl", {
+      .post("https://myysic.xyz:443/api/ytdl", {
         url: ytdlUrl,
       })
       //DEBUG

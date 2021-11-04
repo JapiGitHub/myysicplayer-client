@@ -14,7 +14,7 @@ export default function SignIn({ setTokenValid, setUrlToken }: any) {
     e.preventDefault();
 
     axios
-      .get<any>("http://13.48.136.183:2000/login", {
+      .get<any>("https://myysic.xyz:443/login", {
         headers: {
           username: usernameInput,
           password: passwordInput,
