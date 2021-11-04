@@ -36,8 +36,8 @@ Tekeillä:
 
 - laita noden use cors({}) hyväksymään vain tarpeelliset paikat
 - http kokonaan pois käytöstä kun development on valmis. 301 reroute nginx
-- muuta vielä routet /api taakse nodeen
-- ytdl ja koneelta lataaminen toimimaan myös
+- **DONE** muuta vielä routet /api taakse nodeen
+- **DONE** ytdl ja koneelta lataaminen toimimaan myös taas deployn jälkeen.
 - **DONE** HTTPS, route 53, certificate manger, loadbalancer, EC2, namecheap domain, nginx reverse proxy works
 - **DONE** myysic.xyz ostettu 1$:lla xD joten pitää vielä se domainnimi ja SSL hoitaa tohon, ni sit alkais olee valmista?
 - **DONE**: searchissa varsinkin toi tausta jatkuu liian pitkäksi. eli tee komponenttiin height={{laske se näytettävien biisien määrän mukaan}}, mutta älä tee ton laskun mappia JSX:ssä jotta ei renderöi turhaan..

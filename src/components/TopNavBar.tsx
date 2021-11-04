@@ -41,7 +41,7 @@ export default function TopNavBar({
       .post<any>("https://myysic.xyz:443/api/upload", data)
       .then((res) => {
         console.log(res);
-        setSongList([...songList, res.data]);
+        setSongList([res.data, ...songList]);
       })
       .catch((err) => console.log(err));
   };
