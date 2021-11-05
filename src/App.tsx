@@ -22,26 +22,23 @@ function App() {
 
   type PlayOrPause = "PLAYING" | "STOPPED" | "PAUSED";
 
+  //STATES
   const [songList, setSongList] = useState<string[]>([]);
   const [selectedSong, setSelectedSong] = useState<string>("");
   const [playingOrPaused, setPlayingOrPaused] =
     useState<PlayOrPause>("PLAYING");
   const [playQueue, setPlayQueue] = useState<any>([]);
-
   const [selectedSongLength, setSelectedSongLength] = useState<number>(0);
   const [songElapsed, setSongElapsed] = useState<number>(0);
-
   const [searchText, setSearchText] = useState("");
-
-  //scrolling title
   const [scrollingTitle, setScrollingTitle] = useState("");
 
-  //DEBUG any pois ja kunnollinen type tilalle
+  //UPLOAD STATES
   const [uploadFile, setUploadFile] = useState<any>();
   const [ytdlUrl, setYtdlUrl] = useState<string>("");
   const [showAddSongMenu, setShowAddSongMenu] = useState(false);
 
-  //JWT & SIGN-IN
+  //JWT & SIGN-IN STATES
   const [tokenValid, setTokenValid] = useState(false);
   const localstorageToken: string | null =
     localStorage.getItem("myysicplayer-token");
@@ -55,22 +52,16 @@ function App() {
         headers: { token: urlToken },
       })
       .then(function (response) {
-        // success
         setSongList(response.data);
         setTokenValid(true);
       })
       .catch(function (error) {
-        // handle error
         console.log("TOKEN: ", urlToken);
         console.error("couldnt get songlist", error);
-        //DEBUG
-        //TOKEN:  initialblankwrong
-        //toimii kuitenkin jos saa esim seivaamalla renderöimään uudestaan reactin
       });
   };
 
   //get song/URLs list first time
-
   useEffect(() => {
     if (tokenValid) {
       getSongList();
@@ -79,7 +70,6 @@ function App() {
   }, []);
 
   //get song/URLs list every time new urlToken
-
   useEffect(() => {
     if (urlToken !== "initialblankwrong") {
       getSongList();
@@ -88,7 +78,7 @@ function App() {
   }, [urlToken]);
 
   useEffect(() => {
-    //3000 nimen lista jota scrollataan. ei pitäs loppua kesken vaikka ois kuinka pitkä biisi xD ka riippuu mobilessa kuinka monta riviä tulee titlejä. esim 4k näyttö portrait modessa on mooonta
+    //3000 nimen lista jota scrollataan. ei pitäs loppua kesken vaikka ois kuinka pitkä biisi xD ja riippuu mobilessa kuinka monta riviä tulee titlejä. esim 4k näyttö portrait modessa on mooonta
     //react-text-scroll löytyy npm:stä, mut siinä ei voinu säätää et kuinka lyhyt väli tekstien välillä oli.
     setScrollingTitle(
       `${selectedSong.slice(
@@ -117,9 +107,15 @@ function App() {
     setPlayingOrPaused("PLAYING");
   };
 
-  //FAST FORWARD
+  //FAST FORWARD - en halua
   //jos haluais kelauksen:kelaus fast forward ja back
   //tulis ton Sound komponentin playFromPosition propista. sitä on käytetty tossa songElapsed statessa esimerkiksi
+
+  //next
+  const makeNext = (nextSong: string) => {
+    setPlayQueue([...playQueue, nextSong]);
+    console.log(nextSong);
+  };
 
   //STOP
   const stopSong = (e: React.FormEvent<HTMLButtonElement>) => {
@@ -131,9 +127,7 @@ function App() {
     }
   };
 
-  //jos kutsut tän funktion jsx:ssä alempaa näin:
-  //onLoading={loadingSong}   niin toimii ja saa ton songObjectin react-soundilta, mutta jos taas
-  //  onLoading={() => loadingSong()} niin jää undefinediksi
+  //sound component props
   const loadingSong = (songObj?: songObje) => {
     console.error("duration", songObj ? songObj.duration / 1000 : songObj);
     const songLength: number = songObj ? songObj.duration : 0;
@@ -145,11 +139,6 @@ function App() {
       setSelectedSongLength(songPlaying.duration);
       setSongElapsed(songPlaying.position);
     }
-  };
-
-  const makeNext = (nextSong: string) => {
-    setPlayQueue([...playQueue, nextSong]);
-    console.log(nextSong);
   };
 
   return (
@@ -184,6 +173,7 @@ function App() {
             stopSong={stopSong}
             setTokenValid={setTokenValid}
             setUrlToken={setUrlToken}
+            urlToken={urlToken}
             setSearchText={setSearchText}
           />
           <AllSongs

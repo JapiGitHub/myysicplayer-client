@@ -21,6 +21,7 @@ export default function TopNavBar({
   stopSong,
   setTokenValid,
   setUrlToken,
+  urlToken,
   setSearchText,
 }: any) {
   //
@@ -47,11 +48,19 @@ export default function TopNavBar({
   };
 
   //SEND YOUTUBE / SOUNDCLOUD LINK TO BE DOWNLOADED BY NODE
+  //SEND YOUTUBE / SOUNDCLOUD LINK TO BE DOWNLOADED BY NODE
   const uploadFromYT = () => {
     axios
-      .post("https://myysic.xyz:443/api/ytdl", {
-        url: ytdlUrl,
-      })
+      .post(
+        "https://myysic.xyz:443/api/ytdl",
+        { url: ytdlUrl },
+        {
+          headers: {
+            "Content-type": "application/json",
+            token: urlToken,
+          },
+        }
+      )
       //DEBUG
       .then(function (response) {
         console.log("YTDL RESPONSE : ", response.data);

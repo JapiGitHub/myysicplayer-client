@@ -34,6 +34,7 @@ _Tää on lähinnä oppimisen takia AWS:ssä, koska oikeaan omaan käyttöön mu
 
 Tekeillä:
 
+- ainiin ja checkaa se react render nykiminen. todnäk johtuu Sound komponentin playFromPosition propista?
 - laita noden use cors({}) hyväksymään vain tarpeelliset paikat
 - http kokonaan pois käytöstä kun development on valmis. 301 reroute nginx
 - **DONE** muuta vielä routet /api taakse nodeen
