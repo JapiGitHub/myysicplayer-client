@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import useWindowOrientation from "use-window-orientation";
+import "./signIn.scss";
 
 export default function SignIn({ setTokenValid, setUrlToken }: any) {
   const { orientation } = useWindowOrientation();
@@ -46,7 +47,7 @@ export default function SignIn({ setTokenValid, setUrlToken }: any) {
 
   return (
     <div>
-      <aside id="sign-lock">
+      <aside id="sign-lock" data-testid="sign-lock">
         <aside className="login-filter filter-a"></aside>
         <aside className="login-filter filter-b"></aside>
 
@@ -66,15 +67,17 @@ export default function SignIn({ setTokenValid, setUrlToken }: any) {
                 onChange={(e: any) => setUsernameInput(e.target.value)}
                 required
                 autoFocus
+                data-testid="username-input"
               ></input>
             </div>
             <div className="password-input-container">
-              PASSWORD
+              password
               <input
                 type="password"
                 id="password-input"
                 onChange={(e: any) => setPasswordInput(e.target.value)}
                 required
+                data-testid="password-input"
               ></input>
             </div>
             <svg
@@ -85,9 +88,9 @@ export default function SignIn({ setTokenValid, setUrlToken }: any) {
               xmlns="http://www.w3.org/2000/svg"
               onClick={(e) => {
                 e.preventDefault();
-                setTokenValid(true);
                 loginClick(e);
               }}
+              id="sign-button"
             >
               <g id="svg-lock" clipPath="url(#clip0_1:12)">
                 <g id="avain">

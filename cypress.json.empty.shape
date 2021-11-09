@@ -1,0 +1,6 @@
+{
+  "env": {
+    "testuser": "insert username here",
+    "testpass": "insert password here"
+  }
+}

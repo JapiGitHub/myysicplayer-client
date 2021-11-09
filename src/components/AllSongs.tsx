@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./allSongs.scss";
 
 export default function AllSongs({
   playQueue,
@@ -11,7 +12,6 @@ export default function AllSongs({
 }: any) {
   const [totalSongsVisible, setTotalSongsVisible] = useState(777);
 
-  //biisi listan CSS-HEIGHT style={{}} määritys. haettaessa lista tietenkin pienenee aina.
   //tehty oma looppi tähän erilleen noista samanlaisista JSX loopeista jotta renderöintejä olis vähemmän.
   useEffect(() => {
     let count = 0;
@@ -23,16 +23,17 @@ export default function AllSongs({
           song.toLowerCase().includes(searchText.toLowerCase())
         );
       })
-      .map((item: string, idx: number) => {
+      .map((item: string) => {
         count = count + 1;
+        return null;
       });
-
     setTotalSongsVisible(count);
-  }, [searchText]);
+  }, [searchText, songList, selectedSong]);
 
   return (
     <>
       <section
+        data-testid="songs-container"
         className={(() => {
           switch (true) {
             case totalSongsVisible >= 35 && totalSongsVisible <= 100:
@@ -57,6 +58,7 @@ export default function AllSongs({
                 return (
                   <article
                     className="singlesong-container"
+                    id={`song-index-for-testing${idx}`}
                     key={idx}
                     style={{
                       animationDelay: idx < 35 ? idx * 0.06 + "s" : 0 + "s",
@@ -81,6 +83,7 @@ export default function AllSongs({
                     </button>
                     <div
                       className="make-next-button"
+                      id={`queue-index-for-testing${idx}`}
                       onClick={() => {
                         makeNext(song);
                       }}

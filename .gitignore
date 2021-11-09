@@ -1,4 +1,4 @@
-node_modules
+#DEFAULTS:
 # dependencies
 /node_modules
 /.pnp
@@ -21,7 +21,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-
+# OMAT :
+node_modules
 #muista lisätä tähän jos myöhemmin otat jotain muitakin tiedostomuotoja vastaan
 *.mp3
 *.mp4
@@ -30,7 +31,12 @@ yarn-error.log*
 *.ogg
 *.webm
 
+cypress.json
 .env
 
 #build
 build/*
+
+#varuiksi, ettei käy vahinkoa
+*.ppk
+*.pem

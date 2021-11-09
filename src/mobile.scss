@@ -1,0 +1,241 @@
+@import "./variables.scss";
+
+////////////////////////////////////////////////////////////////////
+//                    MOBILE / PORTRAIT                           //
+////////////////////////////////////////////////////////////////////
+
+@media (orientation: portrait) {
+  .App {
+    #sign-lock {
+      font-size: 2rem;
+
+      .signmenu {
+        border-radius: 4vh;
+        width: 90vw;
+        left: 5vw;
+
+        .username-input-container {
+          font-size: 1.3rem;
+        }
+
+        .password-input-container {
+          font-size: 1.3rem;
+        }
+      }
+
+      .lowbar-container {
+        font-size: 1rem;
+        @keyframes lowbar-start {
+          0% {
+            opacity: 0;
+            bottom: -38vh;
+          }
+          100% {
+            opacity: 1;
+            bottom: -35vh;
+          }
+        }
+      }
+    }
+
+    .all-container {
+      button {
+        font-size: 1.9rem;
+        border-radius: 1vw;
+      }
+      .sticky-nav {
+        font-size: 2rem;
+
+        button {
+          margin-top: 1vh;
+          height: 8vh;
+          background-color: rgba(255, 255, 255, 0.35);
+        }
+
+        .addsong-container {
+          margin-top: calc(#{$topbar-height-mob} - 2vh);
+
+          .addsong-controls {
+            height: auto;
+            padding-bottom: 2vh;
+            padding-left: 3vw;
+            font-size: 1.3rem;
+
+            //UPLOAD FROM DISK
+            #uploadfile-input {
+              width: 90vw;
+            }
+
+            #ytdl-input {
+              width: 90vw;
+              margin: 0 0 0 2vw;
+            }
+            input {
+              font-size: 1.5rem;
+            }
+          }
+        }
+
+        #playqueue {
+          padding-top: calc(#{$topbar-height-mob} - 2.3vh);
+          height: auto;
+          width: auto;
+          max-width: 100vw;
+          margin-left: 0vw;
+          font-size: 1.2rem;
+          text-shadow: 0 0 10px #000000, 0 0 10px #000000, 0 0 10px #000000,
+            0 0 10px #000000;
+          background: linear-gradient(
+            -1deg,
+            rgba(0, 0, 0, 0),
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 1),
+            rgba(0, 0, 0, 1),
+            rgba(0, 0, 0, 1)
+          );
+          display: flex;
+          flex-direction: column;
+          z-index: 9999;
+
+          .queue-container {
+            display: flex;
+            flex-direction: row;
+          }
+
+          .queue-song-container {
+            max-width: 86vw;
+          }
+
+          .delete-queue-hamburger {
+            width: 6vw;
+            height: auto;
+            display: flex;
+
+            padding-bottom: 0px;
+            padding-left: 1vw;
+            padding-right: 1vw;
+          }
+          //ei hover vaan aina rastina ku ei kännyköissä ole hoveria
+          .delete-queue-hamburger {
+            aside {
+              &:first-child {
+                height: 3px;
+                background-color: crimson;
+                transform: rotate(45deg) scale(1.2);
+              }
+
+              &:last-child {
+                height: 3px;
+
+                background-color: crimson;
+                transform: translateY(-3px) rotate(-45deg) scale(1.2);
+              }
+            }
+          }
+        }
+
+        .right-sidebar {
+          .search-input {
+            font-size: 1.1rem;
+
+            background-color: rgba(255, 255, 255, 0.65);
+
+            top: calc(#{$topbar-height-mob} - 12vh);
+
+            right: 18vw;
+            border-radius: 1vw;
+            width: 12vw;
+            height: 6vh;
+
+            color: black;
+
+            z-index: 99;
+          }
+
+          .search-input:hover {
+            border-radius: 1.5vw;
+
+            top: calc(#{$topbar-height-mob} - 13vh);
+
+            right: 4vw;
+
+            height: 8vh;
+
+            background-color: rgba(255, 255, 255, 0.9);
+
+            width: 93vw;
+            font-size: 3rem;
+          }
+
+          #logout-button {
+            border-radius: 1vw;
+
+            height: 6vh;
+
+            font-size: auto;
+
+            top: calc(#{$topbar-height-mob} - 13vh);
+
+            z-index: 99;
+
+            right: 4vw;
+            width: 12vw;
+          }
+
+          #version-label {
+            top: $topbar-height-mob;
+            margin-top: -1.5vh;
+          }
+        }
+
+        .topbar {
+          height: $topbar-height-mob;
+
+          margin-top: 0vh;
+          height: 12vh;
+
+          padding-top: 1vh;
+          display: flex;
+          align-items: flex-start;
+          min-height: 5.5rem;
+
+          #songname-topbar {
+            height: $topbar-height-mob;
+            min-height: 5.5rem;
+          }
+
+          #songname-fade-left {
+            height: $topbar-height-mob;
+          }
+
+          .progressbar-container {
+            height: $topbar-height-mob;
+
+            .progressbar {
+              color: #ff00ff;
+              height: calc(#{$topbar-height-mob} - 3vh);
+            }
+          }
+        }
+
+        .topbar-fade-down {
+          opacity: 0;
+        }
+      }
+    }
+
+    .songs-container {
+      margin-top: calc(#{$topbar-height-mob} - 3vh);
+      .singlesong-container {
+        button {
+          height: auto;
+          font-size: 2.2rem;
+        }
+
+        .make-next-button {
+          border-radius: 0.4vh;
+        }
+      }
+    }
+  }
+}

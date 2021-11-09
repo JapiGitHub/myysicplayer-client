@@ -2,6 +2,9 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./styles.scss";
+import "./mobile.scss";
+import "./4k.scss";
+
 import SignIn from "./components/SignIn";
 import AllSongs from "./components/AllSongs";
 import TopNavBar from "./components/TopNavBar";
@@ -94,7 +97,6 @@ function App() {
   //SONG CONTROLS
   //shuffle
   const nextSong = () => {
-    setSongElapsed(0);
     if (playQueue.length > 0) {
       setSelectedSong(playQueue[playQueue.length - 1]);
       setPlayQueue(playQueue.slice(1));
@@ -121,7 +123,7 @@ function App() {
   const stopSong = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (playingOrPaused === "PLAYING") {
-      setPlayingOrPaused("STOPPED");
+      setPlayingOrPaused("PAUSED");
     } else {
       setPlayingOrPaused("PLAYING");
     }
@@ -129,7 +131,7 @@ function App() {
 
   //sound component props
   const loadingSong = (songObj?: songObje) => {
-    console.error("duration", songObj ? songObj.duration / 1000 : songObj);
+    //console.log("duration", songObj ? songObj.duration / 1000 : songObj);
     const songLength: number = songObj ? songObj.duration : 0;
     setSelectedSongLength(Math.floor(songLength));
   };
@@ -143,15 +145,16 @@ function App() {
 
   return (
     <div className="App">
-      <Sound
-        url={`https://myysic.xyz:443/api/bigplaylist/${selectedSong}?token=${urlToken}`}
-        playStatus={playingOrPaused}
-        onLoading={loadingSong}
-        autoLoad={false}
-        onFinishedPlaying={nextSong}
-        playFromPosition={songElapsed}
-        onPlaying={playingSong}
-      />
+      {selectedSong !== "" ? (
+        <Sound
+          url={`https://myysic.xyz:443/api/bigplaylist/${selectedSong}?token=${urlToken}`}
+          playStatus={playingOrPaused}
+          onLoading={loadingSong}
+          autoLoad={false}
+          onFinishedPlaying={nextSong}
+          onPlaying={playingSong}
+        />
+      ) : null}
       {tokenValid ? (
         <div className="all-container">
           <TopNavBar
