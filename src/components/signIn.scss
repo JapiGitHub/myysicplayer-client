@@ -1,6 +1,29 @@
 @import "../variables.scss";
 
+$bezier: cubic-bezier(0.94, 0.37, 0.5, 0.97);
+$intro-anim-time: 1.5s;
+$fog-anim-time: 2s;
+
+img {
+  object-fit: cover;
+}
+
 #sign-lock {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background-image: linear-gradient(
+    0deg,
+    rgb(4, 2, 5),
+    rgb(48, 21, 45),
+    rgb(101, 116, 145)
+  );
+
+  overflow: hidden;
+
   @keyframes sign-in-fade {
     0% {
       transform: translateY(-1vh);
@@ -28,80 +51,256 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  z-index: 1;
 
-  .login-filter {
-    height: 300vh;
-    width: 300vh;
-    border-radius: 100%;
-    background-image: radial-gradient(
-      rgba(0, 0, 0, 0.3),
-      rgba(21, 235, 92, 0.1),
-      rgba(255, 0, 0, 0),
-      rgba(255, 0, 0, 0)
-    );
+  #parallax-sky {
+    z-index: 0;
+    background-color: rgba(0, 0, 0, 0);
     position: absolute;
-    top: -20vh;
-    left: -40vw;
-    transform-origin: center;
-    z-index: 1;
+    top: 0;
+    left: 0;
+    height: auto;
+    min-height: 30vh;
+    min-width: 100vw;
 
-    animation: movearound 5s ease-in-out alternate infinite;
-    @keyframes movearound {
+    //animation: sky-appear 2s ease forwards;
+    @keyframes sky-appear {
       0% {
-        transform: translateX(0vw) translateY(0vh) scaleX(1);
-      }
-      33% {
-        transform: translateX(80vw) translateY(10vh) scaleX(1.2);
-      }
-
-      65% {
-        transform: translateX(0vw) translateY(50vh) scaleX(1.6);
+        opacity: 0;
       }
       100% {
-        transform: translateX(30vw) translateY(40vh) scaleX(1);
+        opacity: 1;
       }
     }
   }
 
-  .filter-a {
-    animation: movearound 13s ease-in-out alternate infinite;
-  }
-
-  .filter-b {
-    background-image: radial-gradient(
-      rgba(0, 0, 0, 0.3),
-      rgba(6, 52, 180, 0.2),
-      rgba(255, 0, 0, 0),
-      rgba(255, 0, 0, 0)
-    );
-    top: -150vh;
-    left: -150vw;
-    animation: movearound 15s ease-in-out alternate infinite;
-    animation-delay: 3s;
-  }
-
-  #wallpaper-login {
+  #parallax-back {
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0);
     position: absolute;
-    top: 0vh;
+    top: 0;
     left: 0;
+    height: auto;
+    min-height: 55vh;
+
     width: 100vw;
-    height: 100vh;
-    z-index: 0;
-    object-fit: cover;
-    animation: $login-start-animations;
-    animation-delay: $login-between-delay * 0;
+
+    //animation: intro1 $intro-anim-time $bezier forwards;
+    @keyframes intro1 {
+      0% {
+        top: 0;
+      }
+
+      100% {
+        top: -5vh;
+        left: 0vw;
+      }
+    }
+  }
+
+  #parallax-middle {
+    z-index: 10;
+    height: auto;
+    min-height: 80vh;
+
+    width: 100vw;
+
+    background-color: rgba(0, 0, 0, 0);
+
+    position: absolute;
+    top: 25vh;
+    left: 0vw;
+
+    //animation: intro2 $intro-anim-time $bezier forwards;
+    @keyframes intro2 {
+      0% {
+        top: 25vh;
+      }
+
+      100% {
+        top: 18vh;
+      }
+    }
+  }
+
+  #parallax-front {
+    z-index: 19;
+    height: auto;
+    min-height: 40vh;
+    width: 100vw;
+
+    background-color: rgba(0, 0, 0, 0);
+
+    position: absolute;
+    top: 60vh;
+    left: 0vw;
+
+    //animation: intro3 $intro-anim-time $bezier forwards;
+    @keyframes intro3 {
+      0% {
+        top: 90vh;
+      }
+
+      100% {
+        top: 60vh;
+      }
+    }
+  }
+
+  #fog {
+    z-index: 18;
+    position: absolute;
+    left: -10vw;
+    bottom: -20vh;
+    height: 70vh;
+    width: 120vw;
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0)
+    );
+
     opacity: 0;
+    animation: fog-appear 3s ease-out $intro-anim-time forwards,
+      fog-breath $fog-anim-time ease-in-out alternate
+        calc(#{$intro-anim-time} + #{$fog-anim-time}) infinite;
+    @keyframes fog-appear {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes fog-breath {
+      0% {
+        opacity: 0;
+      }
+      1% {
+        opacity: 1;
+      }
+      3% {
+        opacity: 1;
+      }
+      4% {
+        opacity: 0;
+      }
+
+      50% {
+        opacity: 0;
+      }
+
+      51% {
+        opacity: 1;
+      }
+      53% {
+        opacity: 1;
+      }
+      54% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+  }
+
+  #spotlight {
+    z-index: 16;
+    position: absolute;
+    left: 10vw;
+    bottom: 5vh;
+    height: 1.3vh;
+    width: 9vw;
+    transform-origin: center right;
+    background: linear-gradient(
+      270deg,
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0)
+    );
+    filter: blur(3px);
+    transform: rotate(45deg) perspective(100px) rotateY(30deg);
+
+    opacity: 0;
+    animation: spotlight-appear 1s ease $intro-anim-time,
+      spotlight-loop 4s ease-in-out calc(#{$intro-anim-time} + 0.7s) alternate
+        infinite;
+    @keyframes spotlight-appear {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    @keyframes spotlight-loop {
+      0% {
+        opacity: 1;
+
+        transform: rotate(45deg) perspective(100px) rotateY(30deg);
+      }
+      100% {
+        opacity: 1;
+
+        transform: rotate(120deg) perspective(100px) rotateY(30deg);
+      }
+    }
+  }
+
+  // TEE NÄÄ VÄHEMMÄKSI KOODIKSI
+  #spotlight-2 {
+    z-index: 16;
+    position: absolute;
+    left: 20vw;
+    bottom: 5vh;
+    height: 1vh;
+    width: 9vw;
+    transform-origin: center right;
+    background: linear-gradient(
+      270deg,
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0)
+    );
+    filter: blur(3px);
+    transform: rotate(120deg) perspective(100px) rotateY(30deg);
+
+    opacity: 0;
+    animation: spotlight-appear 1s ease $intro-anim-time,
+      spotlight-loop2 4s ease-in-out calc(#{$intro-anim-time} + 1s) alternate
+        infinite;
+    @keyframes spotlight-appear {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    @keyframes spotlight-loop2 {
+      0% {
+        opacity: 1;
+
+        transform: rotate(120deg) perspective(100px) rotateY(30deg);
+      }
+      100% {
+        opacity: 1;
+
+        transform: rotate(45deg) perspective(100px) rotateY(30deg);
+      }
+    }
   }
 
   .signmenu {
-    animation: sign-in-fade 1s ease forwards;
-    opacity: 0;
-    animation-delay: $login-between-delay * 1;
+    //animation: sign-in-fade 1s ease forwards;
+    //animation-delay: $login-between-delay * 1;
 
     text-shadow: 0 0 10px #ffffff;
 
-    z-index: 2;
+    z-index: 20;
 
     position: absolute;
     left: 25vw;
@@ -119,12 +318,11 @@
     -webkit-box-shadow: 5px 18px 48px 0px rgba(0, 0, 0, 1);
     -moz-box-shadow: 5px 18px 48px 0px rgba(0, 0, 0, 1);
 
-    transition: $transition-a;
+    //transition: $transition-a;
 
     span {
-      animation: $login-start-animations;
-      opacity: 0;
-      animation-delay: $login-between-delay * 2;
+      //animation: $login-start-animations;
+      //animation-delay: $login-between-delay * 2;
 
       -webkit-user-select: none; /* Safari */
       -moz-user-select: none; /* Firefox */
@@ -134,27 +332,27 @@
 
     //SVG
     svg {
+      z-index: 21;
       margin-top: 4vh;
       font-size: 4rem;
       width: 13vw;
       height: 13vh;
-      transition: $transition-a;
-      stroke: balck;
-      opacity: 0;
-      animation: $login-start-animations;
-      animation-delay: $login-between-delay * 7;
+      stroke: black;
+      ////animation: $login-start-animations;
+      //animation-delay: $login-between-delay * 7;
 
       #svg-lock {
+        z-index: 21;
         #avain {
-          -webkit-filter: drop-shadow(0px 0px 0px rgb(255, 255, 255));
-          filter: drop-shadow(0px 0px 0px rgb(255, 255, 255));
+          -webkit-filter: drop-shadow(0px 0px 0.5px rgb(255, 255, 255));
+          filter: drop-shadow(0px 0px 0.5px rgb(255, 255, 255));
           transition: $transition-a;
           transform-origin: center;
         }
 
         #lukko {
-          -webkit-filter: drop-shadow(0px 0px 0px rgb(255, 255, 255));
-          filter: drop-shadow(0px 0px 0px rgb(255, 255, 255));
+          -webkit-filter: drop-shadow(0px 0px 0.5px rgb(255, 255, 255));
+          filter: drop-shadow(0px 0px 0.5px rgb(255, 255, 255));
           transform-origin: center;
 
           transition: all 0.2s ease;
@@ -192,21 +390,6 @@
     #signin-button {
       //tää on jätetty tähän jotta enterillä voi submittaa myös
       opacity: 0;
-      /*       margin-top: 6vh;
-
-      font-size: 2rem;
-      padding: 1vw 3vw 1vh 3vw;
-      border-style: none;
-      border-radius: $border-radius-a;
-      transition: $transition-a;
-      transform: scale(1);
-      cursor: pointer;
-      background-color: rgba(255, 255, 255, 0.65);
-      transform-origin: center;
-
-      box-shadow: 5px 18px 20px 0px rgba(0, 0, 0, 0.75);
-      -webkit-box-shadow: 5px 18px 20px 0px rgba(0, 0, 0, 0.75);
-      -moz-box-shadow: 5px 18px 20px 0px rgba(0, 0, 0, 0.75); */
     }
 
     #signin-button:hover {
@@ -228,19 +411,17 @@
       width: 30vw;
       display: grid;
       place-items: center;
-      animation: $login-start-animations;
-      animation-delay: $login-between-delay * 3;
+      //animation: $login-start-animations;
+      //animation-delay: $login-between-delay * 3;
 
-      opacity: 0;
       -webkit-user-select: none; /* Safari */
       -moz-user-select: none; /* Firefox */
       -ms-user-select: none; /* IE10+/Edge */
       user-select: none; /* Standard */
 
       #username-input {
-        opacity: 0;
-        animation: $login-start-animations;
-        animation-delay: $login-between-delay * 4;
+        //animation: $login-start-animations;
+        //animation-delay: $login-between-delay * 4;
         width: 100%;
         height: 100%;
         font-size: 2rem;
@@ -279,10 +460,9 @@
       display: grid;
       place-items: center;
 
-      animation: $login-start-animations;
-      opacity: 0;
+      //animation: $login-start-animations;
 
-      animation-delay: $login-between-delay * 5;
+      //animation-delay: $login-between-delay * 5;
 
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -290,10 +470,8 @@
       user-select: none;
 
       #password-input {
-        animation: $login-start-animations;
-        opacity: 0;
-
-        animation-delay: $login-between-delay * 6;
+        //animation: $login-start-animations;
+        //animation-delay: $login-between-delay * 6;
 
         width: 100%;
         height: 100%;
@@ -347,10 +525,9 @@
     text-align: end;
     transition: $transition-a;
 
-    animation: lowbar-start 1s ease forwards;
-    opacity: 0;
+    //animation: lowbar-start 1s ease forwards;
     //tulee tahallaan jäljessä
-    animation-delay: $login-between-delay * 11;
+    //animation-delay: 3s;
 
     .feather {
       transition: $transition-a;
@@ -370,20 +547,10 @@
         }
       }
     }
-    @keyframes lowbar-start {
-      0% {
-        opacity: 0;
-        bottom: -40vh;
-      }
-      100% {
-        opacity: 1;
-        bottom: -38vh;
-      }
-    }
   }
 
   .lowbar-container:hover {
-    transform: translateY(-10vh) rotate(-3deg);
+    margin-bottom: 10vh;
     font-size: 2.5rem;
     padding-top: 1vh;
     background-color: rgba(0, 0, 0, 0.65);

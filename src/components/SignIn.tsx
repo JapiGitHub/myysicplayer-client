@@ -1,15 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import useWindowOrientation from "use-window-orientation";
+//import useWindowOrientation from "use-window-orientation";
+import gsap from "gsap";
 import "./signIn.scss";
 
 export default function SignIn({ setTokenValid, setUrlToken }: any) {
-  const { orientation } = useWindowOrientation();
+  //const { orientation } = useWindowOrientation();
 
   const [usernameInput, setUsernameInput] = useState("");
   const [passwordInput, setPasswordInput] = useState("");
 
-  const [randomPicture] = useState(Math.floor(Math.random() * 3) + 1);
+  const tlMenu = gsap.timeline({
+    defaults: { opacity: 0, duration: 1, stagger: 0.3 },
+  });
+
+  useEffect(() => {
+    gsap.from("#parallax-back", { y: "5vh" });
+    gsap.from("#parallax-middle", { y: "7vh" });
+    gsap.from("#parallax-front", { y: "30vh" });
+
+    tlMenu.from(".menu-anim", { y: 50 });
+  }, []);
 
   const loginClick = (e: any) => {
     e.preventDefault();
@@ -48,18 +59,10 @@ export default function SignIn({ setTokenValid, setUrlToken }: any) {
   return (
     <div>
       <aside id="sign-lock" data-testid="sign-lock">
-        <aside className="login-filter filter-a"></aside>
-        <aside className="login-filter filter-b"></aside>
-
-        <img
-          src={`./${randomPicture}login.background.${orientation}.jpg`}
-          id="wallpaper-login"
-          alt="login"
-        ></img>
         <form>
-          <section className="signmenu">
-            <span>pls sign in</span>
-            <div className="username-input-container">
+          <section className="signmenu menu-anim">
+            <span className="menu-anim">pls sign in</span>
+            <div className="username-input-container menu-anim">
               username
               <input
                 type="text"
@@ -70,7 +73,7 @@ export default function SignIn({ setTokenValid, setUrlToken }: any) {
                 data-testid="username-input"
               ></input>
             </div>
-            <div className="password-input-container">
+            <div className="password-input-container menu-anim">
               password
               <input
                 type="password"
@@ -81,6 +84,7 @@ export default function SignIn({ setTokenValid, setUrlToken }: any) {
               ></input>
             </div>
             <svg
+              className="menu-anim"
               width="46"
               height="27"
               viewBox="0 0 46 27"
@@ -238,6 +242,30 @@ export default function SignIn({ setTokenValid, setUrlToken }: any) {
             </button>
           </section>
         </form>
+
+        <img
+          src="./parallax.front.png"
+          id="parallax-front"
+          className="anim1"
+        ></img>
+        <img
+          src="./parallax.middle.png"
+          id="parallax-middle"
+          className="anim1"
+        ></img>
+        <img
+          src="./parallax.back.png"
+          id="parallax-back"
+          className="anim1"
+        ></img>
+
+        <img src="./parallax.sky.png" id="parallax-sky" className=""></img>
+
+        <aside id="fog"></aside>
+
+        <aside id="spotlight" className="anim1"></aside>
+        <aside id="spotlight-2" className="anim1"></aside>
+
         <section className="lowbar-container">
           045 248 4883
           <svg
