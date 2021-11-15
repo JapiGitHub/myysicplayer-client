@@ -5,7 +5,7 @@
 nodejs backend:
 https://github.com/JapiGitHub/myysicplayer-server
 
-![Alt Text](http://13.48.136.183/markdown.anim.gif)
+![Alt Text](https://myysic.xyz/myysic.new.login.gif)
 
 ## Ongelma:
 
@@ -15,7 +15,7 @@ Koska soittolistani oli hajautunut ajan saatossa soundcloudiin sekä youtubeen, 
 
 Latasin pythonilla youtuben ja soundcloudin soittolistat aluksi local diskille. Tein soittimen aluksi vain reactilla (TypeScript), mutta koska se on frontend, niin sillä ei oikein voi hakea koko kansion kaikkia biisejä näppärästi. Joten Node:sta backend jonne siirsin biisit jotta tiedostojen hallinta ja tarjoilu onnistuu hyvin. React frontend koska react on huikee. JWT suojaus koska copyrhights jne + AWS ( Budgets, Certificate manager, Loadbalancer, EC2, Route 53 ) + https reverse proxy NGINX + PM2 aina ajamaan nodea. Testit on tehty Cypress:llä. Namecheapilta domaini dollarilla xD Sivu tarkoitettu vain yksityiseen omaan käyttööni ja jos joku haluaa käyttää pohjana omiin projekteihin, olen koittanut lisäillä .env tyhjiä pohjia sinne sitä varten.
 
-![Alt Text](http://13.48.136.183/network.jpg)
+![Alt Text](https://myysic.xyz/network.jpg)
 
 ---
 
