@@ -6,6 +6,7 @@ nodejs backend:
 https://github.com/JapiGitHub/myysicplayer-server
 
 ![Alt Text](https://myysic.xyz/myysic.new.login.gif)
+![Alt Text](https://myysic.xyz/myysic.mobile.jpg)
 
 ## Ongelma:
 
